@@ -6,13 +6,17 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] private int lives = 3;
-    [SerializeField] private float speed = 3.0f;
+    [SerializeField] private float speed = 4.0f;
     [SerializeField] private float jumpForce = 10.0f;
 
-    private bool isGrounded = false;
+    private bool isGrounded;
     private new Rigidbody2D rigidbody;
     private Animator animator;
     private SpriteRenderer sprite;
+
+    private float jumpTimeCounter;
+    private float jumpTime = 0.35f;
+    private bool isJumping;
 
     private void Awake()
     {
@@ -24,7 +28,7 @@ public class Character : MonoBehaviour
     private void Update()
     {
         if (Input.GetButton("Horizontal")) Run();
-        if (isGrounded && Input.GetButtonDown("Jump")) Jump();
+        if (Input.GetButton("Jump")) Jump();
     }
 
     private void FixedUpdate()
@@ -43,7 +47,29 @@ public class Character : MonoBehaviour
 
     private void Jump()
     {
-        rigidbody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        if (isGrounded && Input.GetButtonDown("Jump"))
+        {
+            rigidbody.velocity = transform.up * jumpForce;
+            jumpTimeCounter = jumpTime;
+            isJumping = true;
+        }
+        if (Input.GetButton("Jump") && isJumping)
+        {
+            if (jumpTimeCounter > 0)
+            {
+                rigidbody.velocity = transform.up * jumpForce;
+                jumpTimeCounter -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            isJumping = false;
+        }
     }
 
     private void CheckGround()
