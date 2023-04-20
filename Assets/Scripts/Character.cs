@@ -1,22 +1,19 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : Unit
 {
     [SerializeField] private int lives = 3;
     [SerializeField] private float speed = 4.0f;
     [SerializeField] private float jumpForce = 10.0f;
-
-    private bool isGrounded;
+    [SerializeField] private float jumpTime = 0.35f;
+    
     private new Rigidbody2D rigidbody;
     private Animator animator;
     private SpriteRenderer sprite;
-
+    
     private float jumpTimeCounter;
-    private float jumpTime = 0.35f;
     private bool isJumping;
+    private bool isGrounded;
 
     private void Awake()
     {
@@ -33,7 +30,7 @@ public class Character : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CheckGround();
+        
     }
 
     private void Run()
@@ -53,6 +50,7 @@ public class Character : MonoBehaviour
             jumpTimeCounter = jumpTime;
             isJumping = true;
         }
+        
         if (Input.GetButton("Jump") && isJumping)
         {
             if (jumpTimeCounter > 0)
@@ -70,11 +68,12 @@ public class Character : MonoBehaviour
         {
             isJumping = false;
         }
+        
+        isGrounded = false;
     }
 
-    private void CheckGround()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        var colliders = Physics2D.OverlapCircleAll(transform.position, 0.3f);
-        isGrounded = colliders.Length > 1;
+        isGrounded = collision.gameObject.CompareTag($"Ground");
     }
 }
