@@ -26,6 +26,7 @@ public class Character : Unit
     {
         if (Input.GetButton("Horizontal")) Run();
         if (Input.GetButton("Jump")) Jump();
+        if (transform.localPosition.y < -20) LifeSubtraction();
     }
 
     private void FixedUpdate()
@@ -71,7 +72,16 @@ public class Character : Unit
         
         isGrounded = false;
     }
-
+    
+    private void LifeSubtraction()
+    {
+        if (lives > 0)
+        {
+            lives -= 1;
+            transform.position = new Vector3(-3f, 0f, 0);
+        }
+    }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isGrounded = collision.gameObject.CompareTag($"Ground");
