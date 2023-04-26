@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Character : Unit
@@ -7,6 +8,8 @@ public class Character : Unit
     [SerializeField] private float jumpForce = 10.0f;
     [SerializeField] private float jumpTime = 0.35f;
     
+    private static readonly int State = Animator.StringToHash("State");
+    
     private new Rigidbody2D rigidbody;
     private Animator animator;
     private SpriteRenderer sprite;
@@ -14,6 +17,12 @@ public class Character : Unit
     private float jumpTimeCounter;
     private bool isJumping;
     private bool isGrounded;
+    
+    private CharacterState state
+    {
+        get => (CharacterState)animator.GetInteger(State);
+        set => animator.SetInteger(State, (int)value);
+    }
 
     private void Awake()
     {
@@ -24,6 +33,7 @@ public class Character : Unit
 
     private void Update()
     {
+        if (isGrounded) state = CharacterState.Idle;
         if (Input.GetButton("Horizontal")) Run();
         if (Input.GetButton("Jump")) Jump();
         if (transform.localPosition.y < -20) LifeSubtraction();
@@ -41,6 +51,7 @@ public class Character : Unit
         position = Vector3.MoveTowards(position, position + direction, speed * Time.deltaTime);
         transform.position = position;
         sprite.flipX = direction.x < 0.0;
+        if (isGrounded) state = CharacterState.Run;
     }
 
     private void Jump()
@@ -71,6 +82,7 @@ public class Character : Unit
         }
         
         isGrounded = false;
+        state = CharacterState.Idle; // нужна анимация прыжка
     }
     
     private void LifeSubtraction()
@@ -86,4 +98,11 @@ public class Character : Unit
     {
         isGrounded = collision.gameObject.CompareTag($"Ground");
     }
+}
+
+public enum CharacterState
+{
+    Idle = 0,
+    Run = 1,
+    Jump = 3
 }
