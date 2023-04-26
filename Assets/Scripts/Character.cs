@@ -87,16 +87,14 @@ public class Character : Unit
     
     private void LifeSubtraction()
     {
-        if (lives > 0)
-        {
-            lives -= 1;
-            transform.position = new Vector3(-3f, 0f, 0);
-        }
+        if (lives <= 0) return;
+        lives -= 1;
+        transform.position = new Vector3(-3f, 0f, 0);
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        isGrounded = collision.gameObject.CompareTag($"Ground");
+        isGrounded = collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("OneWayPlatform");
     }
 }
 
