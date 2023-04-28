@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public abstract class Unit : MonoBehaviour
+public sealed class Enemy : MonoBehaviour
 {
-    public int maxLeaves;
+    public int maxLeaves = 20;
     public int currentLeaves;
 
     public void Start()
@@ -20,9 +20,9 @@ public abstract class Unit : MonoBehaviour
             Die();
     }
 
-    protected virtual void Die()
+    private void Die()
     {
-        //Destroy(gameObject);
+        Destroy(gameObject);
         Debug.Log("Die!");
         // Die animation
         

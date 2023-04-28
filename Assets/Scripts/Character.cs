@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Character : Unit
@@ -6,7 +7,8 @@ public class Character : Unit
     [SerializeField] private float speed = 4.0f;
     [SerializeField] private float jumpForce = 10.0f;
     [SerializeField] private float jumpTime = 0.35f;
-    [SerializeField]private float startRecharge = 0.1f;
+    [SerializeField] private float attackRange = 0.5f;
+    [SerializeField] private int attackDamage = 5;
     
     private static readonly int State = Animator.StringToHash("State");
     
@@ -16,10 +18,10 @@ public class Character : Unit
     private new Transform transform;
     
     //Attack
-    private LayerMask selectedEnemy;
-    private float attackRadius;
-    private int damage;
-    private float recharge;
+    public Transform attackPoint;
+    public LayerMask enemyLayers;
+    
+    // private float recharge;
 
     //Moving
     private float jumpTimeCounter;
@@ -46,13 +48,14 @@ public class Character : Unit
         if (isGrounded) state = CharacterState.Idle;
         if (Input.GetButton("Jump")) Jump();
         if (Input.GetButton("Horizontal")) Run();
+        if (Input.GetMouseButtonDown(0)) Attack();
     }
-
+    
     private void FixedUpdate()
     {
         
     }
-
+    
     private void Run()
     {
         var direction = transform.right * Input.GetAxis("Horizontal");
@@ -93,29 +96,14 @@ public class Character : Unit
         }
     }
     
-    private bool IsAttack()
+    private void Attack()
     {
-        if (recharge <= 0)
+        animator.SetTrigger("IsAttack");
+        var hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        foreach (var enemy in hitEnemies)
         {
-            if (Input.GetMouseButton(0))
-            {
-                // attack animation
-            }
-
-            recharge = startRecharge;
-            return true;
-        }
-    
-        recharge -= Time.deltaTime;
-        return false;
-    }
-
-    private void MakeAttack()
-    {
-        var enemies = Physics2D.OverlapCircleAll(transform.position, attackRadius, selectedEnemy);
-        foreach (var enemy in enemies)
-        {
-            enemy.GetComponent<Unit>().ReceiveDamage(damage);
+            enemy.GetComponent<Enemy>().ReceiveDamage(attackDamage);
+            Debug.Log("We hit "+ enemy.name);
         }
     }
     
@@ -129,6 +117,12 @@ public class Character : Unit
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isGrounded = collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("OneWayPlatform");
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint is null) return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
 
