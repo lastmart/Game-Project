@@ -1,5 +1,3 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Character : Unit
@@ -46,10 +44,8 @@ public class Character : Unit
     private void Update()
     {
         if (isGrounded) state = CharacterState.Idle;
-        if (IsAttack()) MakeAttack();
-        if (Input.GetButton("Horizontal")) Run();
         if (Input.GetButton("Jump")) Jump();
-        if (transform.localPosition.y < -20) LifeSubtraction();
+        if (Input.GetButton("Horizontal")) Run();
     }
 
     private void FixedUpdate()
@@ -71,9 +67,11 @@ public class Character : Unit
     {
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
+            state = CharacterState.Jump;
             rigidbody.velocity = transform.up * jumpForce;
             jumpTimeCounter = jumpTime;
             isJumping = true;
+            isGrounded = false;
         }
         
         if (Input.GetButton("Jump") && isJumping)
@@ -93,9 +91,6 @@ public class Character : Unit
         {
             isJumping = false;
         }
-        
-        isGrounded = false;
-        state = CharacterState.Idle; // нужна анимация прыжка
     }
     
     private bool IsAttack()
@@ -141,6 +136,6 @@ public enum CharacterState
 {
     Idle = 0,
     Run = 1,
-    Jump = 3,
-    Attack = 4
+    Jump = 2,
+    Attack = 3
 }
