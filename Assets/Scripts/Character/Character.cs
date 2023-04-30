@@ -1,15 +1,13 @@
 using System;
 using UnityEngine;
 
-public class Character : Unit
+public class Character : MonoBehaviour
 {
     [SerializeField] private int lives = 3;
     [SerializeField] private float speed = 4.0f;
     [SerializeField] private float jumpForce = 10.0f;
     [SerializeField] private float jumpTime = 0.35f;
-    [SerializeField] private float attackRange = 0.5f;
-    [SerializeField] private int attackDamage = 5;
-    
+
     private static readonly int State = Animator.StringToHash("State");
     
     private new Rigidbody2D rigidbody;
@@ -17,13 +15,6 @@ public class Character : Unit
     private SpriteRenderer sprite;
     private new Transform transform;
     
-    //Attack
-    public Transform attackPoint;
-    public LayerMask enemyLayers;
-    public float attackRate = 2f;
-    private float nextAttackTime;
-    
-    //Moving
     private float jumpTimeCounter;
     private bool isJumping;
     private bool isGrounded;
@@ -47,7 +38,6 @@ public class Character : Unit
         if (isGrounded) state = CharacterState.Idle;
         if (Input.GetButton("Jump")) Jump();
         if (Input.GetButton("Horizontal")) Run();
-        if (Input.GetMouseButtonDown(0)) Attack();
     }
     
     private void FixedUpdate()
@@ -95,19 +85,6 @@ public class Character : Unit
         }
     }
     
-    private void Attack()
-    {
-        if (!(Time.time >= nextAttackTime)) return;
-        animator.SetTrigger("IsAttack");
-        var hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        foreach (var enemy in hitEnemies)
-        {
-            enemy.GetComponent<Enemy>().ReceiveDamage(attackDamage);
-            Debug.Log("We hit "+ enemy.name);
-        }
-        nextAttackTime = Time.time + 1f / attackRate;
-    }
-    
     private void LifeSubtraction()
     {
         if (lives <= 0) return;
@@ -118,12 +95,6 @@ public class Character : Unit
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isGrounded = collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("OneWayPlatform");
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (attackPoint is null) return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
 

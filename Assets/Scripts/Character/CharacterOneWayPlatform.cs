@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterOneWayPlatform : MonoBehaviour
 {
     private GameObject currentOneWayPlatform;
-    [SerializeField] private BoxCollider2D characterCollider;
+    [SerializeField] private Collider2D characterCollider;
     private IEnumerator enumerator;
     
     void Update()

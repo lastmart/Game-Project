@@ -1,16 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Unit : MonoBehaviour
+public class BossInfinity : MonoBehaviour
 {
-    public int maxLeaves;
-    public int lives;
+    [SerializeField] public int maxLeaves = 20;
+    [SerializeField] public int lives;
 
     public void Start()
     {
         lives = maxLeaves;
     }
 
-    public virtual void ReceiveDamage(int damage)
+    public void ReceiveDamage(int damage)
     {
         lives -= damage;
         
@@ -20,7 +22,7 @@ public abstract class Unit : MonoBehaviour
             Die();
     }
 
-    public virtual void Die()
+    private void Die()
     {
         //Destroy(gameObject);
         Debug.Log("Die!");

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8699291345869502240}
   - component: {fileID: 8699291345869502255}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: "\u041F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430 lim"
   m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8699291346211010241}
   - component: {fileID: 8699291346211010242}
   - component: {fileID: 8699291346211010243}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform3
   m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}

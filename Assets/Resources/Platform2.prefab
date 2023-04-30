@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2052403176554877050}
   - component: {fileID: 2052403176554877049}
   - component: {fileID: 2052403176554877048}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Platform2
   m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2052403177273318335}
   - component: {fileID: 2052403177273318320}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: "\u041F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430 Help me"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
