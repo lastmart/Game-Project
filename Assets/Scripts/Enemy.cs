@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public sealed class Enemy : Unit
+public sealed class Enemy : MonoBehaviour
 {
     public new int maxLeaves = 20;
     public new int currentLeaves;
@@ -10,7 +10,7 @@ public sealed class Enemy : Unit
         currentLeaves = maxLeaves;
     }
 
-    public override void ReceiveDamage(int damage)
+    public void ReceiveDamage(int damage)
     {
         currentLeaves -= damage;
         
@@ -20,7 +20,7 @@ public sealed class Enemy : Unit
             Die();
     }
 
-    public override void Die()
+    private void Die()
     {
         // Destroy(gameObject);
         Debug.Log("Die!");
