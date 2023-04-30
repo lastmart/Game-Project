@@ -168,6 +168,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
+  attackRate: 2
 --- !u!50 &10719347
 Rigidbody2D:
   serializedVersion: 4
@@ -301,6 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc038c523e8a27489ce65d5c2fcdd11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLeaves: 20
+  currentLeaves: 20
   maxLeaves: 20
   currentLeaves: 20
 --- !u!61 &143954178
@@ -857,6 +860,10 @@ PrefabInstance:
     - target: {fileID: 1899139547794711751, guid: 4fc3adbbcd0030c4ba722d30932e914d, type: 3}
       propertyPath: m_Name
       value: 'Block '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899139547794711751, guid: 4fc3adbbcd0030c4ba722d30932e914d, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fc3adbbcd0030c4ba722d30932e914d, type: 3}

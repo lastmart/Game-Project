@@ -20,15 +20,14 @@ public class Character : Unit
     //Attack
     public Transform attackPoint;
     public LayerMask enemyLayers;
+    public float attackRate = 2f;
+    private float nextAttackTime;
     
-    // private float recharge;
-
     //Moving
     private float jumpTimeCounter;
     private bool isJumping;
     private bool isGrounded;
     
-
     private CharacterState state
     {
         get => (CharacterState)animator.GetInteger(State);
@@ -98,6 +97,7 @@ public class Character : Unit
     
     private void Attack()
     {
+        if (!(Time.time >= nextAttackTime)) return;
         animator.SetTrigger("IsAttack");
         var hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (var enemy in hitEnemies)
@@ -105,6 +105,7 @@ public class Character : Unit
             enemy.GetComponent<Enemy>().ReceiveDamage(attackDamage);
             Debug.Log("We hit "+ enemy.name);
         }
+        nextAttackTime = Time.time + 1f / attackRate;
     }
     
     private void LifeSubtraction()
@@ -131,5 +132,4 @@ public enum CharacterState
     Idle = 0,
     Run = 1,
     Jump = 2,
-    Attack = 3
 }

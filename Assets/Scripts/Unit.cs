@@ -10,17 +10,17 @@ public abstract class Unit : MonoBehaviour
         currentLeaves = maxLeaves;
     }
 
-    public void ReceiveDamage(int damage)
+    public virtual void ReceiveDamage(int damage)
     {
         currentLeaves -= damage;
         
-        // Player hurt animation
+        // Unit hurt animation
         
         if(currentLeaves <= 0)
             Die();
     }
 
-    protected virtual void Die()
+    public virtual void Die()
     {
         //Destroy(gameObject);
         Debug.Log("Die!");
