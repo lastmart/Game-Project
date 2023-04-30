@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Character : Unit
 {
+    public static float CharacterX;
     [SerializeField] private int lives = 3;
     [SerializeField] private float speed = 4.0f;
     [SerializeField] private float jumpForce = 10.0f;
@@ -44,6 +45,7 @@ public class Character : Unit
     
     private void Update()
     {
+        CharacterX = this.transform.position.x;
         if (isGrounded) state = CharacterState.Idle;
         if (Input.GetButton("Jump")) Jump();
         if (Input.GetButton("Horizontal")) Run();

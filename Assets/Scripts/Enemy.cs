@@ -5,7 +5,7 @@ public sealed class Enemy : Unit
     public new int maxLeaves = 20;
     public new int currentLeaves;
 
-    public void Start()
+    private void Start()
     {
         currentLeaves = maxLeaves;
     }
