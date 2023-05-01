@@ -2,15 +2,17 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BossInfinity : MonoBehaviour
+public class BossInfinity : Unit
 {
-    [SerializeField] public int maxLeaves = 20;
+    [SerializeField] public int maxLives = 20;
     [SerializeField] public int lives;
 
     private Rigidbody2D rigidbody;
     private Transform transform;
     private Animator animator;
 
+    protected override int CurrentLives { get => lives; set => lives = value; }
+    
     public Dictionary<Vector2, Vector2> GetFirstStageWay { get; } = new()
     {
         { new Vector2(8,-3), new Vector2(8, 3) },
@@ -29,7 +31,7 @@ public class BossInfinity : MonoBehaviour
     
     private void Awake()
     {
-        lives = maxLeaves;
+        CurrentLives = maxLives;
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         transform = GetComponent<Transform>();
@@ -37,17 +39,15 @@ public class BossInfinity : MonoBehaviour
 
     private void Update()
     {
-        if (lives <= maxLeaves / 2) animator.SetBool("IsEnraged", true);
+        if (lives <= maxLives / 2) animator.SetBool("IsEnraged", true);
+        if (lives <= 0) Die();
     }
 
-    public void ReceiveDamage(int damage)
+    public override void ReceiveDamage(int damage)
     {
         lives -= damage;
         
         // Boss hurt animation
-        
-        if (lives <= 0)
-            Die();
     }
 
     public Vector2 GetClosestTarget()
@@ -57,8 +57,8 @@ public class BossInfinity : MonoBehaviour
             .Min()
             .Key;
     }
-        
-    private void Die()
+
+    protected override void Die()
     {
         animator.SetBool("IsDied", true);
     }
