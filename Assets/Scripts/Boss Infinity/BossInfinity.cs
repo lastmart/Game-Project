@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BossInfinity : MonoBehaviour
@@ -9,6 +11,22 @@ public class BossInfinity : MonoBehaviour
     private Rigidbody2D rigidbody;
     private Transform transform;
     private Animator animator;
+
+    public Dictionary<Vector2, Vector2> GetFirstStagePath { get; } = new()
+    {
+        { new Vector2(8,-3), new Vector2(8, 3) },
+        { new Vector2(8, 3), new Vector2(-8, 3) },
+        { new Vector2(-8, 3), new Vector2(-8, -3) },
+        { new Vector2(-8, -3), new Vector2(8, 3) }
+    };
+
+    public Dictionary<Vector2, Vector2> GetSecondStagePath { get; } = new()
+    {
+        { new Vector2(8,-3), new Vector2(8, 3) },
+        { new Vector2(8, 3), new Vector2(-8, -3) },
+        { new Vector2(-8, -3), new Vector2(-8, 3) },
+        { new Vector2(-8, 3), new Vector2(8, 3) }
+    };
     
     private void Awake()
     {
@@ -33,6 +51,14 @@ public class BossInfinity : MonoBehaviour
             Die();
     }
 
+    public Vector2 GetClosestTarget()
+    { 
+        return GetFirstStagePath
+            .Select(t => ((rigidbody.position - t.Key).magnitude, t.Key))
+            .Min()
+            .Key;
+    }
+        
     private void Die()
     {
         Destroy(gameObject);
