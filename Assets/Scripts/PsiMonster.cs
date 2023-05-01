@@ -8,25 +8,32 @@ public class PsiMonster : Unit
     private float rooting = 0.002f;
     [SerializeField] private float secundomer;
     private float delta = 0.01f;
-    private bool isAppearance = true;
     private bool isX = true;
 
     private int delay = 10;
-    private int phase = 16;
+    private int phase = 17;
+    private int pause = 5;
    
     private void Update()
     {
-        if(secundomer < delay + phase + 1) secundomer += delta;
-        if(secundomer > delay && isAppearance)  Appearance(); 
-        if (secundomer > delay + phase) isAppearance = false;
+        secundomer += delta;
+        if(secundomer > delay && secundomer < delay + phase)  UpMotion(); 
+        if(secundomer > delay + phase + pause && secundomer < delay + phase * 2 + pause)  DownMotion(); 
+        
     }
 
-    private void Appearance()
+    private void UpMotion()
     {
         if (isX) transform.position = new Vector3(Character.CharacterX + 5f, -9f, 0);
         isX = false;
         transform.Translate(0, speed * Time.deltaTime, 0); 
         speed += rooting;
+    }
+
+    private void DownMotion()
+    {
+        transform.Translate(0, -speed * Time.deltaTime, 0); 
+        speed -= rooting;
     }
 
 }
