@@ -19,6 +19,20 @@ public class Character : MonoBehaviour
     private bool isJumping;
     private bool isGrounded;
     
+
+    private CharLivesBar charLivesBar;
+
+    public int Lives
+    {
+        get => lives;
+        
+        set
+        {
+            if (value < 3) lives = value;
+            charLivesBar.Refresh();
+        }
+    }
+    
     private CharacterState state
     {
         get => (CharacterState)animator.GetInteger(State);
