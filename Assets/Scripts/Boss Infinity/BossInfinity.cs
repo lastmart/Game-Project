@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BossInfinity : MonoBehaviour
@@ -5,10 +7,25 @@ public class BossInfinity : MonoBehaviour
     [SerializeField] public int maxLeaves = 20;
     [SerializeField] public int lives;
 
-    public GameObject deathEffect;
     private Rigidbody2D rigidbody;
     private Transform transform;
     private Animator animator;
+
+    public Dictionary<Vector2, Vector2> GetFirstStageWay { get; } = new()
+    {
+        { new Vector2(8,-3), new Vector2(8, 3) },
+        { new Vector2(8, 3), new Vector2(-8, 3) },
+        { new Vector2(-8, 3), new Vector2(-8, -3) },
+        { new Vector2(-8, -3), new Vector2(8, 3) }
+    };
+
+    public Dictionary<Vector2, Vector2> GetSecondStageWay { get; } = new()
+    {
+        { new Vector2(8,-3), new Vector2(8, 3) },
+        { new Vector2(8, 3), new Vector2(-8, -3) },
+        { new Vector2(-8, -3), new Vector2(-8, 3) },
+        { new Vector2(-8, 3), new Vector2(8, 3) }
+    };
     
     private void Awake()
     {
@@ -33,9 +50,16 @@ public class BossInfinity : MonoBehaviour
             Die();
     }
 
+    public Vector2 GetClosestTarget()
+    { 
+        return GetFirstStageWay
+            .Select(t => ((rigidbody.position - t.Key).magnitude, t.Key))
+            .Min()
+            .Key;
+    }
+        
     private void Die()
     {
-        Destroy(gameObject);
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        animator.SetBool("IsDied", true);
     }
 }

@@ -23,9 +23,7 @@ public abstract class Unit : MonoBehaviour
     public virtual void Die()
     {
         //Destroy(gameObject);
-        Debug.Log("Die!");
         // Die animation
-        
         // Disable the unit
     }
 }

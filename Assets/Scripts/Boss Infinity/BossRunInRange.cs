@@ -1,27 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class BossRunInRange : StateMachineBehaviour
 {
     private const float Speed = 5.0f;
-    
     private Vector2 currentTarget;
     private Rigidbody2D rigidbody;
-    
-    private static readonly Dictionary<Vector2, Vector2> TargetsPositions = new()
-    {
-        { new Vector2(7,-3), new Vector2(7, 2) },
-        { new Vector2(7, 2), new Vector2(-11, -3) },
-        { new Vector2(-11, 2), new Vector2(7, -3) },
-        { new Vector2(-11, -3), new Vector2(-11, 2) }
-    };
+    private BossInfinity boss;
+    private Dictionary<Vector2, Vector2> targetsPositions;
     
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         rigidbody = animator.GetComponent<Rigidbody2D>();
-        currentTarget = new Vector2(7, -3);
+        boss = animator.GetComponent<BossInfinity>();
+        currentTarget = boss.GetClosestTarget();
+        targetsPositions = boss.GetSecondStageWay;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -39,7 +35,7 @@ public class BossRunInRange : StateMachineBehaviour
     public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (Vector2.Distance(rigidbody.position, currentTarget) < 0.1)
-            currentTarget = TargetsPositions[currentTarget];
+            currentTarget = targetsPositions[currentTarget];
         var newPosition = Vector2.MoveTowards(rigidbody.position, currentTarget,
             Speed * Time.fixedDeltaTime);
         rigidbody.MovePosition(newPosition);

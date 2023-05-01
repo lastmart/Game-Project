@@ -14,14 +14,12 @@ public class Character : MonoBehaviour
     private Animator animator;
     private SpriteRenderer sprite;
     private new Transform transform;
+    private CharLivesBar charLivesBar;
     
     private float jumpTimeCounter;
     private bool isJumping;
     private bool isGrounded;
     
-
-    private CharLivesBar charLivesBar;
-
     public int Lives
     {
         get => lives;
@@ -51,6 +49,7 @@ public class Character : MonoBehaviour
     {
         if (isGrounded) state = CharacterState.Idle;
         if (Input.GetButton("Jump")) Jump();
+        if (Input.GetButtonUp("Jump")) isJumping = false;
         if (Input.GetButton("Horizontal")) Run();
     }
     
@@ -62,16 +61,15 @@ public class Character : MonoBehaviour
     private void Run()
     {
         var direction = transform.right * Input.GetAxis("Horizontal");
-        var position = transform.position;
-        position = Vector3.MoveTowards(position, position + direction, speed * Time.deltaTime);
-        transform.position = position;
+        var position = transform.position; 
+        transform.position = Vector3.MoveTowards(position, position + direction, speed * Time.deltaTime);
         sprite.flipX = direction.x < 0.0;
         if (isGrounded) state = CharacterState.Run;
     }
 
     private void Jump()
     {
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        if (isGrounded)
         {
             state = CharacterState.Jump;
             rigidbody.velocity = transform.up * jumpForce;
@@ -79,21 +77,15 @@ public class Character : MonoBehaviour
             isJumping = true;
             isGrounded = false;
         }
-        
-        if (Input.GetButton("Jump") && isJumping)
-        {
-            if (jumpTimeCounter > 0)
-            {
-                rigidbody.velocity = transform.up * jumpForce;
-                jumpTimeCounter -= Time.deltaTime;
-            }
-            else
-            {
-                isJumping = false;
-            }
-        }
 
-        if (Input.GetButtonUp("Jump"))
+        if (!isJumping) return;
+        
+        if (jumpTimeCounter > 0)
+        {
+            rigidbody.velocity = transform.up * jumpForce;
+            jumpTimeCounter -= Time.deltaTime;
+        }
+        else
         {
             isJumping = false;
         }

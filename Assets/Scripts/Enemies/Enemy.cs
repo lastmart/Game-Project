@@ -2,8 +2,8 @@ using UnityEngine;
 
 public sealed class Enemy : MonoBehaviour
 {
-    public new int maxLeaves = 20;
-    public new int currentLeaves;
+    public  int maxLeaves = 20;
+    public  int currentLeaves;
 
     public void Start()
     {
