@@ -1,15 +1,18 @@
 using System;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : Unit
 {
     [SerializeField] private int lives = 3;
     [SerializeField] private float speed = 4.0f;
     [SerializeField] private float jumpForce = 10.0f;
     [SerializeField] private float jumpTime = 0.35f;
-
-    private static readonly int State = Animator.StringToHash("State");
+    [SerializeField] private float invulnerabilityDuration = 1.0f;
+    [SerializeField] private bool inInvulnerability;
     
+    private static readonly int State = Animator.StringToHash("State");
+
+    private float invulnerabilityTimer;
     private new Rigidbody2D rigidbody;
     private Animator animator;
     private SpriteRenderer sprite;
@@ -19,6 +22,7 @@ public class Character : MonoBehaviour
     private float jumpTimeCounter;
     private bool isJumping;
     private bool isGrounded;
+    
     
     public int Lives
     {
@@ -91,6 +95,18 @@ public class Character : MonoBehaviour
         }
     }
     
+    public override void ReceiveDamage(int damage)
+    {
+        lives -= damage;
+        if (lives <= 0) Die();
+        inInvulnerability = true;
+        // Player hurt animation
+    }
+
+    protected override void Die()
+    {
+        
+    }
     private void LifeSubtraction()
     {
         if (lives <= 0) return;

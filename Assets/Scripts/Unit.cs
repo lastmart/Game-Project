@@ -2,28 +2,18 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
-    public int maxLeaves;
-    public int lives;
-
-    public void Start()
-    {
-        lives = maxLeaves;
-    }
-
+    protected virtual int CurrentLives { get; set; }
+    
     public virtual void ReceiveDamage(int damage)
     {
-        lives -= damage;
+        CurrentLives -= damage;
         
-        // Unit hurt animation
-        
-        if(lives <= 0)
+        if(CurrentLives <= 0)
             Die();
     }
 
-    public virtual void Die()
+    protected virtual void Die()
     {
-        //Destroy(gameObject);
-        // Die animation
-        // Disable the unit
+        Destroy(gameObject);
     }
 }
