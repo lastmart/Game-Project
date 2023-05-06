@@ -1,16 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Integral : Unit
 {
     [SerializeField] private float speed = 4.0f;
     private const int Damage = 1;
-
     private new Rigidbody2D rigidbody;
     private new Transform transform;
-    private readonly Vector3 direction = new (1,0);
+    public Vector3 direction = new (1,0);
     public LayerMask playerLayer;
     
     private void Start()
@@ -19,7 +16,7 @@ public class Integral : Unit
         transform = GetComponent<Transform>();
     }
     
-    private void Update()
+    private void FixedUpdate()
     {
         var position = transform.position;
         var newPosition = Vector2.MoveTowards(position, position + direction,

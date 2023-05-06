@@ -6,16 +6,15 @@ public class Character : Unit
     [SerializeField] public int lives = 3;
     [SerializeField] private float speed = 4.0f;
     [SerializeField] private float jumpForce = 10.0f;
-    [SerializeField] private float jumpTime = 0.35f;
-    [SerializeField] private float invulnerabilityDuration = 1.0f;
-    [SerializeField] private bool inInvulnerability;
+    [SerializeField] private float jumpTime = 0.25f;
+    [SerializeField] private float invulnerabilityDuration;
+    [SerializeField] private float timeOfInvulnerability = 1.5f;
     
     private static readonly int State = Animator.StringToHash("State");
 
     private float invulnerabilityTimer;
     private new Rigidbody2D rigidbody;
     private Animator animator;
-    private SpriteRenderer sprite;
     private new Transform transform;
     public CharLivesBar charLivesBar;
     
@@ -23,6 +22,7 @@ public class Character : Unit
     private bool isJumping;
     private bool isGrounded;
     private bool isFacingRight;
+    private bool inInvulnerability;
     
     private CharacterState state
     {
@@ -34,23 +34,25 @@ public class Character : Unit
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
         transform = GetComponent<Transform>();
     }
     
-    private void Update()
+    private void FixedUpdate()
     {
         if (isGrounded) state = CharacterState.Idle;
         if (Input.GetButton("Jump")) Jump();
         if (Input.GetButtonUp("Jump")) isJumping = false;
         if (Input.GetButton("Horizontal")) Run();
+        UpdateInvulnerability();
     }
-    
-    private void FixedUpdate()
+
+    private void UpdateInvulnerability()
     {
-        
+        if (!inInvulnerability) return;
+        invulnerabilityDuration -= Time.deltaTime;
+        if (invulnerabilityDuration < 0) inInvulnerability = false;
     }
-    
+
     private void Run()
     {
         var direction = transform.right * Input.GetAxis("Horizontal");
@@ -94,10 +96,12 @@ public class Character : Unit
     
     public override void ReceiveDamage(int damage)
     {
+        if (inInvulnerability) return;
         lives -= damage;
         charLivesBar.Refresh();
         if (lives <= 0) Die();
         inInvulnerability = true;
+        invulnerabilityDuration = timeOfInvulnerability;
         // Player hurt animation
     }
 

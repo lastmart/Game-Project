@@ -37,7 +37,7 @@ public class BossInfinity : Unit
         transform = GetComponent<Transform>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (lives <= maxLives / 2) animator.SetBool("IsEnraged", true);
         if (lives <= 0) Die();

@@ -162,7 +162,7 @@ MonoBehaviour:
   jumpForce: 10
   jumpTime: 0.35
   invulnerabilityDuration: 1
-  inInvulnerability: 0
+  timeOfInvulnerability: 1.2
   charLivesBar: {fileID: 1041276310}
 --- !u!50 &10719347
 Rigidbody2D:
@@ -428,6 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  direction: {x: 1, y: 0, z: 0}
   playerLayer:
     serializedVersion: 2
     m_Bits: 8

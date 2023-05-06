@@ -14,7 +14,7 @@ public class CharacterCombat : MonoBehaviour
     public Transform attackPoint;
     public LayerMask enemyLayers;
     
-    void Update()
+    private void FixedUpdate()
     {
         if (!(Time.time >= nextAttackTime)) return;
         if (Input.GetMouseButton(0))
