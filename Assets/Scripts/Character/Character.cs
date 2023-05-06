@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Character : Unit
 {
-    [SerializeField] private int lives = 3;
+    [SerializeField] public int lives = 3;
     [SerializeField] private float speed = 4.0f;
     [SerializeField] private float jumpForce = 10.0f;
     [SerializeField] private float jumpTime = 0.35f;
@@ -17,23 +17,12 @@ public class Character : Unit
     private Animator animator;
     private SpriteRenderer sprite;
     private new Transform transform;
-    private CharLivesBar charLivesBar;
+    public CharLivesBar charLivesBar;
     
     private float jumpTimeCounter;
     private bool isJumping;
     private bool isGrounded;
-    
-    
-    public int Lives
-    {
-        get => lives;
-        
-        set
-        {
-            if (value < 3) lives = value;
-            charLivesBar.Refresh();
-        }
-    }
+    private bool isFacingRight;
     
     private CharacterState state
     {
@@ -67,8 +56,16 @@ public class Character : Unit
         var direction = transform.right * Input.GetAxis("Horizontal");
         var position = transform.position; 
         transform.position = Vector3.MoveTowards(position, position + direction, speed * Time.deltaTime);
-        sprite.flipX = direction.x < 0.0;
+        if (direction.x < 0 && !isFacingRight || direction.x > 0 && isFacingRight) Flip();
         if (isGrounded) state = CharacterState.Run;
+    }
+    
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        var theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 
     private void Jump()
@@ -98,6 +95,7 @@ public class Character : Unit
     public override void ReceiveDamage(int damage)
     {
         lives -= damage;
+        charLivesBar.Refresh();
         if (lives <= 0) Die();
         inInvulnerability = true;
         // Player hurt animation
@@ -106,12 +104,6 @@ public class Character : Unit
     protected override void Die()
     {
         
-    }
-    private void LifeSubtraction()
-    {
-        if (lives <= 0) return;
-        lives -= 1;
-        transform.position = new Vector3(-3f, 0f, 0);
     }
     
     private void OnCollisionEnter2D(Collision2D collision)

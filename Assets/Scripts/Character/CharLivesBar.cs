@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharLivesBar : MonoBehaviour
 {
     private Transform[] hearts = new Transform[3];
-    private Character character;
+    public Character character;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class CharLivesBar : MonoBehaviour
     {
         for (var i = 0; i < hearts.Length; i++)
         {
-            hearts[i].gameObject.SetActive(i<character.Lives);
+            hearts[i].gameObject.SetActive(i < character.lives);
         }
     }
 }

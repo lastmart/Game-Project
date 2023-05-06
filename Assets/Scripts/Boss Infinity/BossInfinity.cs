@@ -18,15 +18,15 @@ public class BossInfinity : Unit
         { new Vector2(8,-3), new Vector2(8, 3) },
         { new Vector2(8, 3), new Vector2(-8, 3) },
         { new Vector2(-8, 3), new Vector2(-8, -3) },
-        { new Vector2(-8, -3), new Vector2(8, 3) }
+        { new Vector2(-8, -3), new Vector2(8, -3) }
     };
-
+    
     public Dictionary<Vector2, Vector2> GetSecondStageWay { get; } = new()
     {
         { new Vector2(8,-3), new Vector2(8, 3) },
         { new Vector2(8, 3), new Vector2(-8, -3) },
         { new Vector2(-8, -3), new Vector2(-8, 3) },
-        { new Vector2(-8, 3), new Vector2(8, 3) }
+        { new Vector2(-8, 3), new Vector2(8, -3) }
     };
     
     private void Awake()
