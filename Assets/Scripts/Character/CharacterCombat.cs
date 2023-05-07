@@ -17,7 +17,7 @@ public class CharacterCombat : MonoBehaviour
     private void FixedUpdate()
     {
         if (!(Time.time >= nextAttackTime)) return;
-        if (Input.GetMouseButton(0))
+        if (Input.GetButton("Fire1"))
         {
             Attack();
         }

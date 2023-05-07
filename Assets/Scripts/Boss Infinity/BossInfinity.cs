@@ -7,8 +7,7 @@ public class BossInfinity : Unit
     [SerializeField] public int maxLives = 20;
     [SerializeField] public int lives;
 
-    private Rigidbody2D rigidbody;
-    private Transform transform;
+    private new Rigidbody2D rigidbody;
     private Animator animator;
 
     protected override int CurrentLives { get => lives; set => lives = value; }
@@ -34,7 +33,6 @@ public class BossInfinity : Unit
         CurrentLives = maxLives;
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        transform = GetComponent<Transform>();
     }
 
     private void FixedUpdate()

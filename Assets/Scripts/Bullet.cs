@@ -6,12 +6,13 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 10.0f;
-    private Vector3 direction;
+    private Vector3 direction = new (1,0);
     public Vector3 Direction { set => direction = value; }
-    
+    public float Speed { set => speed = value; }
+
     private void Start()
     {
-        Destroy(gameObject, 1.4f);
+        Destroy(gameObject, 2.1f);
     }
 
     private void FixedUpdate()
