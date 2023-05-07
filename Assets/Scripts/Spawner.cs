@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 [RequireComponent(typeof(Integral))]
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private bool active;
     [SerializeField] private float startTimeBetweenSpawn = 5.0f;
     public Integral integral = new (new Vector3(1,0));
     public GameObject psi;
@@ -15,6 +16,7 @@ public class Spawner : MonoBehaviour
     
     private void Update()
     {
+        if (!active) return;
         if (timeBetweenSpawn <= 0)
         {
             Instantiate(integral, transform.position, Quaternion.identity);

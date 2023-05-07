@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1899139547794711750}
   - component: {fileID: 1899139547794711748}
   - component: {fileID: 1899139547794711749}
-  m_Layer: 6
+  m_Layer: 16
   m_Name: Block
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899139547794711751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.174316, y: -3.0686684, z: -0.008310661}
+  m_LocalPosition: {x: -4.174316, y: -3.0686684, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1981680429
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c49f3fcf303e5ab4eaba63c2056ea8e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -5,8 +5,8 @@ public class Integral : Unit
 {
     [SerializeField] private float speed = 4.0f;
     private const int Damage = 1;
-    private new Rigidbody2D rigidbody;
-    private new Transform transform;
+    private Rigidbody2D rigidbody;
+    private Transform transform;
     public Vector3 direction;
     public LayerMask playerLayer;
 
