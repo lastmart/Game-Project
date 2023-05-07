@@ -7,8 +7,13 @@ public class Integral : Unit
     private const int Damage = 1;
     private new Rigidbody2D rigidbody;
     private new Transform transform;
-    public Vector3 direction = new (1,0);
+    public Vector3 direction;
     public LayerMask playerLayer;
+
+    public Integral(Vector3 direction)
+    {
+        this.direction = direction;
+    }
     
     private void Start()
     {
