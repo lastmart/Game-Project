@@ -42,15 +42,15 @@ public class Spawner : MonoBehaviour
 
     private void SpawnSigma()
     {
-        if (transform.rotation.y == 0)
+        var transform1 = transform;
+        var rotation = transform1.rotation.y switch
         {
-            Instantiate(sigma, transform.position, Quaternion.identity);
-        }
-        else
-        {
-            var transform1 = transform;
-            var obj = Instantiate(sigma, transform1.position, transform1.rotation);
-        }
+            0 => Quaternion.identity,
+            _ => transform1.rotation
+        };
+        var obj = Instantiate(sigma, transform1.position, rotation);
+        var sigmaObj = obj.GetComponent<Sigma>();
+        sigmaObj.SetTarget(transform1.position + transform1.right * 2);
     }
 
     private void SpawnPsi()

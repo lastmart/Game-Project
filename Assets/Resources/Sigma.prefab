@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 1
   maxShots: 5
+  speed: 1
   firePoint: {fileID: 3268117939296025513}
 --- !u!95 &2887151783334689102
 Animator:
