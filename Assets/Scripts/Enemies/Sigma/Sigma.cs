@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 
 public class Sigma : Unit
 {
-    [SerializeField] private float fireRate = 1.0f;
     [SerializeField] private int maxShots = 5;
     [SerializeField] private float speed = 1.0f;
     
@@ -25,35 +24,33 @@ public class Sigma : Unit
         animator = GetComponent<Animator>();
     }
     
-    // InvokeRepeating(nameof(Shoot), fireRate, fireRate);
-    
-    private void Update()
-    {
-        
-    }
-
     public void Shoot()
     {
-        if (shotsNumber > maxShots) animator.SetBool("FinishAttack", true);
+        shotsNumber += 1;
+        if (shotsNumber >= maxShots) animator.SetBool("FinishAttack", true);
         var pointRight = firePoint.right;
         var obj = Instantiate(bullet, firePoint.position, firePoint.rotation);
         obj.Direction = pointRight;
     }
 
-    public void MoveToTarget() => MoveTo(targetPosition);
+    public void MoveToTarget() 
+    {
+        if (transform.position == targetPosition) animator.SetBool("StartAttack", true);
+        MoveTo(targetPosition);
+    }
 
-    public void MoveToInitialPoint() => MoveTo(initialPosition);
+    public void MoveToInitialPoint()
+    {
+        if (transform.position == initialPosition) Destroy(gameObject);
+        MoveTo(initialPosition);
+    }
+
+    public void SetTarget(Vector3 target) => targetPosition = target;
 
     private void MoveTo(Vector3 target)
     {
         var position = transform.position;
-        transform.position = Vector3.MoveTowards(position, targetPosition, speed * Time.deltaTime);
-    }
-    
-    private enum SigmaStates
-    {
-        Move,
-        Shoot
+        transform.position = Vector3.MoveTowards(position, target, speed * Time.deltaTime);
     }
 }
 
