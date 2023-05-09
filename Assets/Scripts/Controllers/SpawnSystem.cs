@@ -26,8 +26,8 @@ public class SpawnSystem : MonoBehaviour
         
         if (timeBetweenSpawn <= 0)
         {
-            var enemy = (Enemies)generator.Next(0, 3);
             var spawnerNumber = generator.Next(0, spawners.Length - 1);
+            var enemy = SelectEnemy(spawnerNumber);
             spawners[spawnerNumber].SpawnEnemy(enemy);
             timeBetweenSpawn = startTimeBetweenSpawn;
         }
@@ -35,5 +35,12 @@ public class SpawnSystem : MonoBehaviour
         {
             timeBetweenSpawn -= Time.deltaTime;
         }
+    }
+
+    private Enemies SelectEnemy(int spawnerNumber)
+    {
+        if (spawnerNumber < 6)
+            return (Enemies)generator.Next(0, 2);
+        return Enemies.Psi;
     }
 }

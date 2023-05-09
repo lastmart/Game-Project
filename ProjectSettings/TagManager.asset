@@ -16,7 +16,7 @@ TagManager:
   - Ground
   - Enemies
   - Platforms
-  - 
+  - Bullets
   - 
   - 
   - 
@@ -55,9 +55,12 @@ TagManager:
   - name: Enemies
     uniqueID: 4046085695
     locked: 0
-  - name: Character
+  - name: Bullets
     uniqueID: 3632834925
     locked: 0
-  - name: UI
+  - name: Character
     uniqueID: 1868871403
+    locked: 0
+  - name: UI
+    uniqueID: 2358044007
     locked: 0

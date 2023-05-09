@@ -29,12 +29,7 @@ public class Integral : Unit
     {
         
     }
-
-    public void Rotate()
-    {
-        transform.eulerAngles = new Vector3(0, 180, 0);
-    }
-
+    
     private void CheckCharacter()
     {
         var hitPlayer = Physics2D.OverlapCircle(transform.position, 1.0f, playerLayer);

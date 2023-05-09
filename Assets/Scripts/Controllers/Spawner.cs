@@ -43,19 +43,18 @@ public class Spawner : MonoBehaviour
     private void SpawnSigma()
     {
         var transform1 = transform;
-        var rotation = transform1.rotation.y switch
-        {
-            0 => Quaternion.identity,
-            _ => transform1.rotation
-        };
-        var obj = Instantiate(sigma, transform1.position, rotation);
+        var obj = Instantiate(sigma, transform1.position, transform1.rotation);
         var sigmaObj = obj.GetComponent<Sigma>();
         sigmaObj.SetTarget(transform1.position + transform1.right * 2);
     }
 
     private void SpawnPsi()
     {
-        Instantiate(psi, transform.position, Quaternion.identity);
+        var transform1 = transform;
+        var position = transform1.position;
+        var obj = Instantiate(psi, position, Quaternion.identity);
+        var psiObj = obj.GetComponent<Psi>();
+        psiObj.SetTarget(position + transform1.up * 3);
     }
     
     private void OnDrawGizmosSelected()
@@ -66,7 +65,7 @@ public class Spawner : MonoBehaviour
 
 public enum Enemies
 {
-    Psi,
     Integral,
-    Sigma
+    Sigma,
+    Psi
 }
