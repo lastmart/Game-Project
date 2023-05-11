@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CharLivesBar : MonoBehaviour
 {
-    private Transform[] hearts = new Transform[3];
+    private readonly Transform[] hearts = new Transform[3];
     public Character character;
 
     private void Awake()

@@ -1,17 +1,32 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private float reloadFrequency = 20.0f;
+    [SerializeField] public int maxCapacity = 3;
+    
     public GameObject integral;
     public GameObject psi;
     public GameObject sigma;
-    private float timeBetweenSpawn;
     
-    
+    private float reloadTime; 
+    public int currentCapacity;
+
+    private void Awake()
+    {
+        reloadTime = reloadFrequency;
+        currentCapacity = maxCapacity;
+    }
+
+    private void FixedUpdate()
+    {
+        reloadTime -= 0.01f;
+        if (reloadTime > 0) return;
+        Debug.Log("I am reload");
+        reloadTime = reloadFrequency;
+        currentCapacity = maxCapacity;
+    }
+
     public void SpawnEnemy(Enemies enemies)
     {
         switch (enemies) 
@@ -27,6 +42,7 @@ public class Spawner : MonoBehaviour
 
     private void SpawnIntegral()
     {
+        currentCapacity--;
         if (transform.rotation.y == 0)
         {
             Instantiate(integral, transform.position, Quaternion.identity);
@@ -42,14 +58,17 @@ public class Spawner : MonoBehaviour
 
     private void SpawnSigma()
     {
+        currentCapacity -= 3;
         var transform1 = transform;
-        var obj = Instantiate(sigma, transform1.position, transform1.rotation);
+        var position = transform1.position;
+        var obj = Instantiate(sigma, position, transform1.rotation);
         var sigmaObj = obj.GetComponent<Sigma>();
-        sigmaObj.SetTarget(transform1.position + transform1.right * 2);
+        sigmaObj.SetTarget(position + transform1.right * 2);
     }
 
     private void SpawnPsi()
     {
+        currentCapacity--;
         var transform1 = transform;
         var position = transform1.position;
         var obj = Instantiate(psi, position, Quaternion.identity);

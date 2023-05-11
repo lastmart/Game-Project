@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = System.Random;
 
@@ -27,6 +24,8 @@ public class SpawnSystem : MonoBehaviour
         if (timeBetweenSpawn <= 0)
         {
             var spawnerNumber = generator.Next(0, spawners.Length - 1);
+            while(spawners[spawnerNumber].currentCapacity <= 0)
+                spawnerNumber = generator.Next(0, spawners.Length - 1);
             var enemy = SelectEnemy(spawnerNumber);
             spawners[spawnerNumber].SpawnEnemy(enemy);
             timeBetweenSpawn = startTimeBetweenSpawn;
