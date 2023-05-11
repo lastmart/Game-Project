@@ -1,17 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CharacterOneWayPlatform : MonoBehaviour
 {
-    private GameObject currentOneWayPlatform;
     [SerializeField] private Collider2D characterCollider;
+    private GameObject currentOneWayPlatform;
     private IEnumerator enumerator;
     
     void Update()
     {
-        if (!Input.GetKeyDown(KeyCode.S)) return;
+        if (!Input.GetButtonDown("Vertical") || !(Input.GetAxis("Vertical") < 0)) return;
         if (currentOneWayPlatform is not null)
         {
             StartCoroutine(DisableCollision());
