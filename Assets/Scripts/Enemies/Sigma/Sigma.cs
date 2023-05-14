@@ -10,42 +10,42 @@ public class Sigma : Unit
     [SerializeField] private float speed = 1.0f;
     
     public Transform firePoint;
-    private Animator animator;
-    private Bullet bullet;
-    
-    private int shotsNumber;
-    private Vector3 initialPosition;
-    private Vector3 targetPosition;
+    protected Animator Animator;
+    protected Bullet Bullet;
+
+    protected int ShotsNumber;
+    protected Vector3 InitialPosition;
+    protected Vector3 TargetPosition;
 
     private void Awake()
     {
-        initialPosition = targetPosition = transform.position;
-        bullet = Resources.Load<Bullet>("Bullet");
-        animator = GetComponent<Animator>();
+        InitialPosition = TargetPosition = transform.position;
+        Bullet = Resources.Load<Bullet>("Bullet");
+        Animator = GetComponent<Animator>();
     }
     
-    public void Shoot()
+    public virtual void Shoot()
     {
-        shotsNumber += 1;
-        if (shotsNumber >= maxShots) animator.SetBool("FinishAttack", true);
+        ShotsNumber += 1;
+        if (ShotsNumber >= maxShots) Animator.SetBool("FinishAttack", true);
         var pointRight = firePoint.right;
-        var obj = Instantiate(bullet, firePoint.position, firePoint.rotation);
+        var obj = Instantiate(Bullet, firePoint.position, firePoint.rotation);
         obj.Direction = pointRight;
     }
 
     public void MoveToTarget() 
     {
-        if (transform.position == targetPosition) animator.SetBool("StartAttack", true);
-        MoveTo(targetPosition);
+        if (transform.position == TargetPosition) Animator.SetBool("StartAttack", true);
+        MoveTo(TargetPosition);
     }
 
     public void MoveToInitialPoint()
     {
-        if (transform.position == initialPosition) Destroy(gameObject);
-        MoveTo(initialPosition);
+        if (transform.position == InitialPosition) Destroy(gameObject);
+        MoveTo(InitialPosition);
     }
 
-    public void SetTarget(Vector3 target) => targetPosition = target;
+    public void SetTarget(Vector3 target) => TargetPosition = target;
 
     private void MoveTo(Vector3 target)
     {

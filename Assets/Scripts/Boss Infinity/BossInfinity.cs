@@ -49,10 +49,10 @@ public class BossInfinity : Unit
     }
 
     public Vector2 GetClosestTarget()
-    { 
+    {
         return GetFirstStageWay
-            .Select(t => ((rigidbody.position - t.Key).magnitude, t.Key))
-            .Min()
+            .OrderBy(t => (rigidbody.position - t.Key).magnitude)
+            .First()
             .Key;
     }
 

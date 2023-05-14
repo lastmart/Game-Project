@@ -1,20 +1,16 @@
-using System;
 using UnityEngine;
-using Random = System.Random;
+using Random = UnityEngine.Random;
 
-public class SpawnSystem : MonoBehaviour
+public class SpawnSystemV1 : MonoBehaviour
 {
     [SerializeField] private bool isActive; 
-    [SerializeField] private float startTimeBetweenSpawn = 5.0f;
-    private Spawner[] spawners;
-    private Random generator;
+    [SerializeField] private float startTimeBetweenSpawn = 4.0f;
+    private SpawnerV1[] spawners;
     private float timeBetweenSpawn;
-
     
     private void Awake()
     {
-        spawners = gameObject.GetComponentsInChildren<Spawner>();
-        generator = new Random(DateTime.Now.Millisecond);
+        spawners = gameObject.GetComponentsInChildren<SpawnerV1>();
     }
 
     private void Update()
@@ -23,9 +19,9 @@ public class SpawnSystem : MonoBehaviour
         
         if (timeBetweenSpawn <= 0)
         {
-            var spawnerNumber = generator.Next(0, spawners.Length - 1);
-            while(spawners[spawnerNumber].currentCapacity <= 0)
-                spawnerNumber = generator.Next(0, spawners.Length - 1);
+            var spawnerNumber = (int)(Random.value * 10) % (spawners.Length - 1);
+            while (spawners[spawnerNumber].currentCapacity <= 0) 
+                spawnerNumber = (int)(Random.value * 10) % (spawners.Length - 1);
             var enemy = SelectEnemy(spawnerNumber);
             spawners[spawnerNumber].SpawnEnemy(enemy);
             timeBetweenSpawn = startTimeBetweenSpawn;
@@ -39,7 +35,7 @@ public class SpawnSystem : MonoBehaviour
     private Enemies SelectEnemy(int spawnerNumber)
     {
         if (spawnerNumber < 6)
-            return (Enemies)generator.Next(0, 2);
+            return (Enemies)(Random.value * 10 % 2);
         return Enemies.Psi;
     }
 }

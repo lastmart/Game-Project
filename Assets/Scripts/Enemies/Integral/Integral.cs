@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 public class Integral : Unit
 {
     [SerializeField] private float speed = 4.0f;
+    
     private const int Damage = 1;
     private new Rigidbody2D rigidbody;
     public Vector3 direction;
@@ -29,8 +30,8 @@ public class Integral : Unit
     {
         
     }
-    
-    private void CheckCharacter()
+
+    protected void CheckCharacter()
     {
         var hitPlayer = Physics2D.OverlapCircle(transform.position, 1.0f, playerLayer);
         if (hitPlayer is null) return;

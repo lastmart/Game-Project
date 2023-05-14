@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class SpawnerV2 : MonoBehaviour
 {
     [SerializeField] private float reloadFrequency = 20.0f;
     [SerializeField] public int maxCapacity = 3;
@@ -42,17 +44,9 @@ public class Spawner : MonoBehaviour
     private void SpawnIntegral()
     {
         currentCapacity--;
-        if (transform.rotation.y == 0)
-        {
-            Instantiate(integral, transform.position, Quaternion.identity);
-        }
-        else
-        {
-            var transform1 = transform;
-            var obj = Instantiate(integral, transform1.position, transform1.rotation);
-            var localScale = obj.transform.localScale;
-            obj.transform.localScale = new Vector3(-localScale.x, localScale.y);
-        }
+        var transform1 = transform;
+        var position = transform1.position;
+        Instantiate(integral, position, transform1.rotation);
     }
 
     private void SpawnSigma()
@@ -79,11 +73,4 @@ public class Spawner : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, 0.5f);
     }
-}
-
-public enum Enemies
-{
-    Integral,
-    Sigma,
-    Psi
 }
