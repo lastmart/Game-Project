@@ -3,7 +3,7 @@ using Random = UnityEngine.Random;
 
 public class SpawnSystem: MonoBehaviour
 {
-    [SerializeField] private bool isActive; 
+    [SerializeField] public bool isActive; 
     [SerializeField] private float startTimeBetweenSpawn = 4.0f;
     private Spawner[] spawners;
     private float timeBetweenSpawn;

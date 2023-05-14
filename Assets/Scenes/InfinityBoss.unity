@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eddf0dfddf968d4469179d3a8d6856d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 1
+  isActive: 0
   startTimeBetweenSpawn: 4
 --- !u!4 &191411675 stripped
 Transform:
@@ -3776,6 +3776,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8567932866793550398, guid: a25528ca6851ce9439c795d5dfc1fe52, type: 3}
   m_PrefabInstance: {fileID: 1821611550}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1823077125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 659770164729863209, guid: e7e5757f053c87f41a53b0a0486e9fce, type: 3}
+  m_PrefabInstance: {fileID: 659770164602686767}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f012fff76967f004b8dfea9ead746fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1856794433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4048,6 +4059,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1899139547794711750, guid: 4fc3adbbcd0030c4ba722d30932e914d, type: 3}
   m_PrefabInstance: {fileID: 292174206}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2019583992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2019583994}
+  - component: {fileID: 2019583993}
+  m_Layer: 0
+  m_Name: LevelController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2019583993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019583992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f131402a44b4c4ba1e881dbfde58ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstStage: {fileID: 1419226409}
+  secondStage: {fileID: 191343083}
+  boss: {fileID: 1823077125}
+--- !u!4 &2019583994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019583992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12, y: 5, z: 0.5217095}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2024045745
 PrefabInstance:
   m_ObjectHideFlags: 0

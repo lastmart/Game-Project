@@ -9,6 +9,7 @@ public class BossInfinity : Unit
 
     private new Rigidbody2D rigidbody;
     private Animator animator;
+    public bool inRange;
 
     protected int CurrentLives { get => lives; set => lives = value; }
     
@@ -37,7 +38,11 @@ public class BossInfinity : Unit
 
     private void FixedUpdate()
     {
-        if (lives <= maxLives / 2) animator.SetBool("IsEnraged", true);
+        if (lives <= maxLives / 2)
+        {
+            animator.SetBool("IsEnraged", true);
+            inRange = true;
+        }
         if (lives <= 0) Die();
     }
 

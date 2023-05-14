@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6517955289398432765, guid: 348d1101e37fb2b4fb0fce3eef9e4879, type: 3}
       propertyPath: m_Name
-      value: Sigma
+      value: SigmaV2
       objectReference: {fileID: 0}
     - target: {fileID: 6517955289883940092, guid: 348d1101e37fb2b4fb0fce3eef9e4879, type: 3}
       propertyPath: m_Color.b
@@ -90,6 +90,7 @@ MonoBehaviour:
   maxShots: 5
   speed: 1
   firePoint: {fileID: 5322200098642758572}
+  maxShots: 3
 --- !u!4 &5322200098642758572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3268117939296025513, guid: 348d1101e37fb2b4fb0fce3eef9e4879, type: 3}
