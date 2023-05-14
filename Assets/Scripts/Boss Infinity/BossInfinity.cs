@@ -10,7 +10,7 @@ public class BossInfinity : Unit
     private new Rigidbody2D rigidbody;
     private Animator animator;
 
-    protected override int CurrentLives { get => lives; set => lives = value; }
+    protected int CurrentLives { get => lives; set => lives = value; }
     
     public Dictionary<Vector2, Vector2> GetFirstStageWay { get; } = new()
     {

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8567932866793550398}
-  - component: {fileID: 8567932866793550397}
+  - component: {fileID: 1593616412}
   m_Layer: 0
   m_Name: SpawnerV2
   m_TagString: Untagged
@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8567932866793550399}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11, y: -2.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8567932866793550397
+--- !u!114 &1593616412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,6 +47,6 @@ MonoBehaviour:
   reloadFrequency: 20
   maxCapacity: 3
   integral: {fileID: 1404647507775714730, guid: d499fe79dc343c64ab8b8514277a43d1, type: 3}
-  psi: {fileID: 1165276409736022100, guid: 6e97643180b41de4abc8b01a580778a6, type: 3}
+  psi: {fileID: 1537129243815504761, guid: 316548f77c4c8ac4c806faea5bd9ae6f, type: 3}
   sigma: {fileID: 4535831761859142648, guid: e9c98bc81b3bb7e4eaf5cc7fd0243267, type: 3}
   currentCapacity: 0

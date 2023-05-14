@@ -1,28 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Psi : Unit
 {
-    [SerializeField] private float speed = 4.0f;
+    [SerializeField] protected float speed = 4.0f;
     private const int Damage = 1;
     
     private new Rigidbody2D rigidbody;
     public Vector3 direction;
     public LayerMask playerLayer;
-    private Vector3 targetPosition;
-    
-    private void Start()
+    protected Vector3 TargetPosition;
+
+    protected virtual void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         var transform1 = transform;
         direction = transform1.up;
     }
-    
-    private void FixedUpdate()
+
+    private protected virtual void FixedUpdate()
     {
         var position = transform.position;
-        if ((position - targetPosition).magnitude < 0.1) direction.y *= -1;
+        if ((position - TargetPosition).magnitude < 0.1) direction.y *= -1;
         var newPosition = Vector2.MoveTowards(position, position + direction,
             speed * Time.deltaTime);
         rigidbody.MovePosition(newPosition);
@@ -34,7 +32,7 @@ public class Psi : Unit
         
     }
     
-    public void SetTarget(Vector3 target) => targetPosition = target;
+    public void SetTarget(Vector3 target) => TargetPosition = target;
     
     private void CheckCharacter()
     {

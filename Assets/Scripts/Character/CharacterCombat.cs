@@ -30,7 +30,8 @@ public class CharacterCombat : MonoBehaviour
         var hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (var enemy in hitEnemies)
         {
-            enemy.GetComponent<BossInfinity>().ReceiveDamage(attackDamage);
+            enemy.GetComponent<BossInfinity>()?.ReceiveDamage(attackDamage);
+            enemy.GetComponent<StaticPsi>()?.ReceiveDamage(attackDamage);
             Debug.Log("We hit "+ enemy.name);
         }
         nextAttackTime = Time.time + 1f / attackRate;

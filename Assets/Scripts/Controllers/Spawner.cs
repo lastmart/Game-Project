@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class SpawnerV1 : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     [SerializeField] private float reloadFrequency = 20.0f;
     [SerializeField] public int maxCapacity = 3;
@@ -58,12 +58,12 @@ public class SpawnerV1 : MonoBehaviour
         sigmaObj.SetTarget(position + transform1.right * 2);
     }
 
-    private void SpawnPsi()
+    protected virtual void SpawnPsi()
     {
         currentCapacity--;
         var transform1 = transform;
         var position = transform1.position;
-        var obj = Instantiate(psi, position, Quaternion.identity);
+        var obj = Instantiate(psi, position, transform1.rotation);
         var psiObj = obj.GetComponent<Psi>();
         psiObj.SetTarget(position + transform1.up * 3);
     }

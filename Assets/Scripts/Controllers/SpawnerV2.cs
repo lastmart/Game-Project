@@ -2,75 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerV2 : MonoBehaviour
+public class SpawnerV2 : Spawner
 {
-    [SerializeField] private float reloadFrequency = 20.0f;
-    [SerializeField] public int maxCapacity = 3;
+    public bool psiIsSpawned; 
     
-    public GameObject integral;
-    public GameObject psi;
-    public GameObject sigma;
-    
-    private float reloadTime; 
-    public int currentCapacity;
-
-    private void Awake()
+    protected override void SpawnPsi()
     {
-        reloadTime = reloadFrequency;
-        currentCapacity = maxCapacity;
-    }
-
-    private void FixedUpdate()
-    {
-        reloadTime -= 0.01f;
-        if (reloadTime > 0) return;
-        reloadTime = reloadFrequency;
-        currentCapacity = maxCapacity;
-    }
-
-    public void SpawnEnemy(Enemies enemies)
-    {
-        switch (enemies) 
-        {
-            case Enemies.Sigma: SpawnSigma();
-                break;
-            case Enemies.Integral: SpawnIntegral();
-                break;
-            case Enemies.Psi: SpawnPsi();
-                break;
-        }
-    }
-
-    private void SpawnIntegral()
-    {
+        if (psiIsSpawned) return;
         currentCapacity--;
         var transform1 = transform;
         var position = transform1.position;
-        Instantiate(integral, position, transform1.rotation);
-    }
-
-    private void SpawnSigma()
-    {
-        currentCapacity -= 3;
-        var transform1 = transform;
-        var position = transform1.position;
-        var obj = Instantiate(sigma, position, transform1.rotation);
-        var sigmaObj = obj.GetComponent<Sigma>();
-        sigmaObj.SetTarget(position + transform1.right * 2);
-    }
-
-    private void SpawnPsi()
-    {
-        currentCapacity--;
-        var transform1 = transform;
-        var position = transform1.position;
-        var obj = Instantiate(psi, position, Quaternion.identity);
-        var psiObj = obj.GetComponent<Psi>();
-        psiObj.SetTarget(position + transform1.up * 3);
-    }
-    
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(transform.position, 0.5f);
+        var obj = Instantiate(psi, position, transform1.rotation);
+        var psiObj = obj.GetComponent<StaticPsi>();
+        psiObj.SetTarget(position + transform1.up * 2);
+        psiObj.direction = transform.up;
+        psiObj.spawner = this;
+        psiIsSpawned = true;
     }
 }

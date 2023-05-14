@@ -1,16 +1,16 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SpawnSystemV2 : MonoBehaviour
+public class SpawnSystem: MonoBehaviour
 {
     [SerializeField] private bool isActive; 
     [SerializeField] private float startTimeBetweenSpawn = 4.0f;
-    private SpawnerV2[] spawners;
+    private Spawner[] spawners;
     private float timeBetweenSpawn;
     
     private void Awake()
     {
-        spawners = gameObject.GetComponentsInChildren<SpawnerV2>();
+        spawners = gameObject.GetComponentsInChildren<Spawner>();
     }
 
     private void Update()
@@ -20,13 +20,10 @@ public class SpawnSystemV2 : MonoBehaviour
         if (timeBetweenSpawn <= 0)
         {
             var spawnerNumber = (int)(Random.value * 10) % (spawners.Length - 1);
-            for (var i = 0 ; i < 2 ; i++)
-            {
-                while (spawners[spawnerNumber].currentCapacity <= 0)
-                    spawnerNumber = (int)(Random.value * 10) % (spawners.Length - 1);
-                var enemy = SelectEnemy();
-                spawners[spawnerNumber].SpawnEnemy(enemy);
-            }
+            while (spawners[spawnerNumber].currentCapacity <= 0) 
+                spawnerNumber = (int)(Random.value * 10) % (spawners.Length - 1);
+            var enemy = SelectEnemy(spawnerNumber);
+            spawners[spawnerNumber].SpawnEnemy(enemy);
             timeBetweenSpawn = startTimeBetweenSpawn;
         }
         else
@@ -35,8 +32,10 @@ public class SpawnSystemV2 : MonoBehaviour
         }
     }
 
-    private Enemies SelectEnemy()
+    private Enemies SelectEnemy(int spawnerNumber)
     {
-        return (Enemies)(Random.value * 10 % 2);
+        if (spawnerNumber < 6)
+            return (Enemies)(Random.value * 10 % 2);
+        return Enemies.Psi;
     }
 }
