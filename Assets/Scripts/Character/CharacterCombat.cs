@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterCombat : MonoBehaviour
 {
     [SerializeField] private float attackRange = 0.5f;
-    [SerializeField] private int attackDamage = 5;
+    [SerializeField] private int attackDamage = 1;
     
     public float attackRate = 2f;
     private float nextAttackTime;

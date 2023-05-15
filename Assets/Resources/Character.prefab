@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 0.5
-  attackDamage: 5
+  attackDamage: 1
   attackRate: 2
   animator: {fileID: 8291221089162530432}
   attackPoint: {fileID: 8291221088022711957}

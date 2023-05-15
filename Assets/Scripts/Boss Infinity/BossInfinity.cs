@@ -7,6 +7,7 @@ public class BossInfinity : Unit
     [SerializeField] public int maxLives = 20;
     [SerializeField] public int lives;
 
+    public HealthBar healthBar;
     private new Rigidbody2D rigidbody;
     private Animator animator;
     public bool inRange;
@@ -15,23 +16,24 @@ public class BossInfinity : Unit
     
     public Dictionary<Vector2, Vector2> GetFirstStageWay { get; } = new()
     {
-        { new Vector2(8,-3), new Vector2(8, 3) },
-        { new Vector2(8, 3), new Vector2(-8, 3) },
-        { new Vector2(-8, 3), new Vector2(-8, -3) },
-        { new Vector2(-8, -3), new Vector2(8, -3) }
+        { new Vector2(11,-4), new Vector2(11, 2) },
+        { new Vector2(11, 2), new Vector2(-11, 2) },
+        { new Vector2(-11, 2), new Vector2(-11, -4) },
+        { new Vector2(-11, -4), new Vector2(11, -4) }
     };
     
     public Dictionary<Vector2, Vector2> GetSecondStageWay { get; } = new()
     {
-        { new Vector2(8,-3), new Vector2(8, 3) },
-        { new Vector2(8, 3), new Vector2(-8, -3) },
-        { new Vector2(-8, -3), new Vector2(-8, 3) },
-        { new Vector2(-8, 3), new Vector2(8, -3) }
+        { new Vector2(11,-4), new Vector2(11, 2) },
+        { new Vector2(11, 2), new Vector2(-11, -4) },
+        { new Vector2(-11, -4), new Vector2(-11, 2) },
+        { new Vector2(-11, 2), new Vector2(11, -4) }
     };
     
     private void Awake()
     {
         CurrentLives = maxLives;
+        healthBar.SetMaxHealth(maxLives);
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
@@ -49,7 +51,7 @@ public class BossInfinity : Unit
     public override void ReceiveDamage(int damage)
     {
         lives -= damage;
-        
+        healthBar.SetHealth(lives);
         // Boss hurt animation
     }
 

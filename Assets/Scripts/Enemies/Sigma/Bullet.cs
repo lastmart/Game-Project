@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, 2.1f);
+        Destroy(gameObject, 3f);
     }
 
     private void FixedUpdate()

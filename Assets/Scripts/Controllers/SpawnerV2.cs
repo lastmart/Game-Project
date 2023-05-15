@@ -14,7 +14,7 @@ public class SpawnerV2 : Spawner
         var position = transform1.position;
         var obj = Instantiate(psi, position, transform1.rotation);
         var psiObj = obj.GetComponent<StaticPsi>();
-        psiObj.SetTarget(position + transform1.up * 2);
+        psiObj.SetTarget(position + transform1.up * 3);
         psiObj.direction = transform.up;
         psiObj.spawner = this;
         psiIsSpawned = true;

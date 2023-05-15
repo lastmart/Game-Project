@@ -92,6 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLives: 20
   lives: 0
+  healthBar: {fileID: 0}
+  inRange: 0
 --- !u!70 &659770164729863207
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -105,8 +107,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.052770816, y: 0.35157865}
-  m_Size: {x: 2.3295977, y: 1.3600229}
+  m_Offset: {x: -0.06864257, y: 0.436235}
+  m_Size: {x: 3.3984008, y: 1.8679667}
   m_Direction: 1
 --- !u!1 &659770164945937302
 GameObject:

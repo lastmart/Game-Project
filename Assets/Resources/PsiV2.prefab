@@ -163,5 +163,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  timeOfInvulnerability: 0.5
+  invulnerabilityDuration: 0
   healths: 3
   spawner: {fileID: 0}

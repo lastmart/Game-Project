@@ -55,7 +55,7 @@ public class Spawner : MonoBehaviour
         var position = transform1.position;
         var obj = Instantiate(sigma, position, transform1.rotation);
         var sigmaObj = obj.GetComponent<Sigma>();
-        sigmaObj.SetTarget(position + transform1.right * 2);
+        sigmaObj.SetTarget(position + transform1.right * 3);
     }
 
     protected virtual void SpawnPsi()
@@ -65,7 +65,7 @@ public class Spawner : MonoBehaviour
         var position = transform1.position;
         var obj = Instantiate(psi, position, transform1.rotation);
         var psiObj = obj.GetComponent<Psi>();
-        psiObj.SetTarget(position + transform1.up * 3);
+        psiObj.SetTarget(position + transform1.up * 4);
     }
     
     private void OnDrawGizmosSelected()

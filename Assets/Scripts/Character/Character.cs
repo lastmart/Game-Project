@@ -101,7 +101,7 @@ public class Character : Unit
         if (lives <= 0) Die();
         inInvulnerability = true;
         invulnerabilityDuration = timeOfInvulnerability;
-        // Player hurt animation
+        animator.SetTrigger("IsAttacked");
     }
 
     protected override void Die()
@@ -120,4 +120,5 @@ public enum CharacterState
     Idle = 0,
     Run = 1,
     Jump = 2,
+    Died = 3
 }
