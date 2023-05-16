@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class StaticPsi : Psi
 {
@@ -14,9 +13,8 @@ public class StaticPsi : Psi
     
     private new Rigidbody2D rigidbody;
     private Animator animator;
-    public SpawnerV2 spawner;
+    public SpawnerSt2 spawner;
     
-
     protected override void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -25,12 +23,11 @@ public class StaticPsi : Psi
     private protected override void FixedUpdate()
     {
         var position = transform.position;
-        if ((position - TargetPosition).magnitude < 0.1) enabled = false;
+        UpdateInvulnerability();
+        if ((position - TargetPosition).magnitude < 0.1) return;
         var newPosition = Vector2.MoveTowards(position, position + direction,
             speed * Time.deltaTime);
         rigidbody.MovePosition(newPosition);
-        CheckCharacter();
-        UpdateInvulnerability();
     }
     
     private void UpdateInvulnerability()
@@ -54,11 +51,11 @@ public class StaticPsi : Psi
         spawner.psiIsSpawned = false;
         Destroy(gameObject);
     }
-    
-    private void CheckCharacter()
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        var hitPlayer = Physics2D.OverlapCircle(transform.position, 1.0f, playerLayer);
-        if (hitPlayer is null) return;
-        hitPlayer.GetComponent<Character>().ReceiveDamage(Damage);
+        var character = collision.gameObject.GetComponent<Character>();
+        if (character is null) return;
+        character.ReceiveDamage(Damage);
     }
 }

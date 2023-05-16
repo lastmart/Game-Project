@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerV2 : Spawner
+public class SpawnerSt2 : Spawner
 {
     public bool psiIsSpawned; 
     

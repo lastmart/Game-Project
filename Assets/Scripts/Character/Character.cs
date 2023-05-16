@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Character : Unit
@@ -8,20 +9,28 @@ public class Character : Unit
     [SerializeField] private float jumpTime = 0.25f;
     [SerializeField] private float invulnerabilityDuration;
     [SerializeField] private float timeOfInvulnerability = 1.5f;
+    [SerializeField] private float attackRange = 0.5f;
+    [SerializeField] private int attackDamage = 1;
     
     private static readonly int State = Animator.StringToHash("State");
 
-    private float invulnerabilityTimer;
     private new Rigidbody2D rigidbody;
     private Animator animator;
     private new Transform transform;
     public CharLivesBar charLivesBar;
+    public Transform attackPoint;
+    public LayerMask enemyLayers;
     
+    private float invulnerabilityTimer;
     private float jumpTimeCounter;
+    private float nextAttackTime;
+    public float attackRate = 2f;
+    
     private bool isJumping;
     private bool isGrounded;
     private bool isFacingRight;
     private bool inInvulnerability;
+    
     
     private CharacterState state
     {
@@ -39,10 +48,11 @@ public class Character : Unit
     private void FixedUpdate()
     {
         if (isGrounded) state = CharacterState.Idle;
-        if (Input.GetButton("Jump")) Jump();
-        if (Input.GetButtonUp("Jump")) isJumping = false;
-        if (Input.GetButton("Horizontal")) Run();
         UpdateInvulnerability();
+        if (Input.GetButton("Horizontal")) Run();
+        if (Input.GetButton("Fire1") && Time.time >= nextAttackTime) Attack();
+        else if (Input.GetButton("Jump")) Jump();
+        if (Input.GetButtonUp("Jump")) isJumping = false;
     }
 
     private void UpdateInvulnerability()
@@ -112,6 +122,27 @@ public class Character : Unit
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isGrounded = collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("OneWayPlatform");
+    }
+    
+    // ReSharper disable Unity.PerformanceAnalysis
+    private void Attack()
+    {
+        animator.SetTrigger("IsAttack");
+        state = CharacterState.Idle;
+        var hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        foreach (var enemy in hitEnemies)
+        {
+            enemy.GetComponent<BossInfinity>()?.ReceiveDamage(attackDamage);
+            enemy.GetComponent<StaticPsi>()?.ReceiveDamage(attackDamage);
+            Debug.Log("We hit "+ enemy.name);
+        }
+        nextAttackTime = Time.time + 1f / attackRate;
+    }
+    
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint is null) return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
 

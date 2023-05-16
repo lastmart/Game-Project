@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1165276409736022103}
   - component: {fileID: 3525346534830317252}
   - component: {fileID: 2150351661296569174}
+  - component: {fileID: 984490385}
   m_Layer: 7
   m_Name: Psi
   m_TagString: Untagged
@@ -127,6 +128,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  TargetPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &2150351661296569174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +141,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774bb199c9d4e8444a94e01f5289b3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 3
+  lifetime: 2
+--- !u!95 &984490385
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165276409736022100}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fec6534b795850b40b7b84c042f8c284, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1165276409955590378
 GameObject:
   m_ObjectHideFlags: 0

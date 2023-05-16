@@ -4,7 +4,8 @@ using Random = UnityEngine.Random;
 public class SpawnSystem: MonoBehaviour
 {
     [SerializeField] public bool isActive; 
-    [SerializeField] private float startTimeBetweenSpawn = 4.0f;
+    [SerializeField] private float startTimeBetweenSpawn = 2.0f;
+    
     private Spawner[] spawners;
     private float timeBetweenSpawn;
     
@@ -32,10 +33,15 @@ public class SpawnSystem: MonoBehaviour
         }
     }
 
-    private Enemies SelectEnemy(int spawnerNumber)
+    protected virtual Enemies SelectEnemy(int spawnerNumber)
     {
-        if (spawnerNumber < 6)
-            return (Enemies)(Random.value * 10 % 2);
-        return Enemies.Psi;
+        return (Enemies)(Random.value * 10 % 2);
     }
+}
+
+public enum Enemies
+{
+    Integral,
+    Sigma,
+    Psi
 }

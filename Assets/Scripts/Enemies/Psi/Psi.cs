@@ -8,7 +8,7 @@ public class Psi : Unit
     private new Rigidbody2D rigidbody;
     public Vector3 direction;
     public LayerMask playerLayer;
-    protected Vector3 TargetPosition;
+    [SerializeField]protected Vector3 TargetPosition;
 
     protected virtual void Start()
     {

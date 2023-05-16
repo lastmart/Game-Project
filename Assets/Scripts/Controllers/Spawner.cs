@@ -27,9 +27,10 @@ public class Spawner : MonoBehaviour
         currentCapacity = maxCapacity;
     }
 
-    public void SpawnEnemy(Enemies enemies)
+    // ReSharper disable Unity.PerformanceAnalysis
+    public virtual void SpawnEnemy(Enemies enemy)
     {
-        switch (enemies) 
+        switch (enemy) 
         {
             case Enemies.Sigma: SpawnSigma();
                 break;
@@ -40,7 +41,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private void SpawnIntegral()
+    protected virtual void SpawnIntegral()
     {
         currentCapacity--;
         var transform1 = transform;
@@ -48,7 +49,7 @@ public class Spawner : MonoBehaviour
         Instantiate(integral, position, transform1.rotation);
     }
 
-    private void SpawnSigma()
+    protected virtual void SpawnSigma()
     {
         currentCapacity -= 3;
         var transform1 = transform;
@@ -72,11 +73,4 @@ public class Spawner : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, 0.5f);
     }
-}
-
-public enum Enemies
-{
-    Integral,
-    Sigma,
-    Psi
 }
