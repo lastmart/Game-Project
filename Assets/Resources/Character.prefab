@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &166683439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 166683440}
+  m_Layer: 3
+  m_Name: GroundPosition
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &166683440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166683439}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.07, y: -0.261, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8291221089162530435}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8291221088022711956
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +159,6 @@ GameObject:
   - component: {fileID: 8291221089162530432}
   - component: {fileID: 8291221089162530436}
   - component: {fileID: 8291221089162530433}
-  - component: {fileID: 8291221089162530446}
   - component: {fileID: 1736473017}
   m_Layer: 3
   m_Name: Character
@@ -151,6 +181,7 @@ Transform:
   m_Children:
   - {fileID: 8291221088022711957}
   - {fileID: 8291221088878937138}
+  - {fileID: 166683440}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -169,7 +200,7 @@ Rigidbody2D:
   m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 6
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -214,7 +245,19 @@ MonoBehaviour:
   jumpTime: 0.35
   invulnerabilityDuration: 1
   timeOfInvulnerability: 1.2
+  attackRange: 0.5
+  attackDamage: 1
+  groundCheck: 0.3
   charLivesBar: {fileID: 0}
+  attackPoint: {fileID: 8291221088022711957}
+  groundPosition: {fileID: 166683440}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  attackRate: 2
 --- !u!114 &8291221089162530433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,26 +271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterCollider: {fileID: 1736473017}
---- !u!114 &8291221089162530446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8291221089162530439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 262e51ac090bcbf499eb1780a3c30958, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRange: 0.5
-  attackDamage: 1
-  attackRate: 2
-  animator: {fileID: 8291221089162530432}
-  attackPoint: {fileID: 8291221088022711957}
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!70 &1736473017
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

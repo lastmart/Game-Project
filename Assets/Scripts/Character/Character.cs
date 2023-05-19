@@ -1,5 +1,7 @@
+using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Character : Unit
 {
@@ -11,6 +13,7 @@ public class Character : Unit
     [SerializeField] private float timeOfInvulnerability = 1.5f;
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private int attackDamage = 1;
+    [SerializeField] private float groundCheck = 0.3f;
     
     private static readonly int State = Animator.StringToHash("State");
 
@@ -19,7 +22,9 @@ public class Character : Unit
     private new Transform transform;
     public CharLivesBar charLivesBar;
     public Transform attackPoint;
+    public Transform groundPosition;
     public LayerMask enemyLayers;
+    [FormerlySerializedAs("groundLayer")] public LayerMask groundLayers;
     
     private float invulnerabilityTimer;
     private float jumpTimeCounter;
@@ -53,6 +58,11 @@ public class Character : Unit
         if (Input.GetButton("Fire1") && Time.time >= nextAttackTime) Attack();
         else if (Input.GetButton("Jump")) Jump();
         if (Input.GetButtonUp("Jump")) isJumping = false;
+    }
+
+    private void Update()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundPosition.position, groundCheck, groundLayers);
     }
 
     private void UpdateInvulnerability()
@@ -118,12 +128,7 @@ public class Character : Unit
     {
         
     }
-    
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        isGrounded = collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("OneWayPlatform");
-    }
-    
+
     // ReSharper disable Unity.PerformanceAnalysis
     private void Attack()
     {
@@ -143,6 +148,7 @@ public class Character : Unit
     {
         if (attackPoint is null) return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.DrawWireSphere(groundPosition.position, groundCheck);
     }
 }
 

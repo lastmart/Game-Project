@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BossInfinity : Unit
 {
@@ -10,9 +11,10 @@ public class BossInfinity : Unit
     public HealthBar healthBar;
     private new Rigidbody2D rigidbody;
     private Animator animator;
-    public bool inRange;
+    public BossInfinityLevelController controller;
 
-    protected int CurrentLives { get => lives; set => lives = value; }
+    public bool isInvulnerable;
+    private int CurrentLives { get => lives; set => lives = value; }
     
     public Dictionary<Vector2, Vector2> GetFirstStageWay { get; } = new()
     {
@@ -30,12 +32,13 @@ public class BossInfinity : Unit
         { new Vector2(-11, 2), new Vector2(11, -4) }
     };
     
-    private void Awake()
+    private void Start()
     {
         CurrentLives = maxLives;
         healthBar.SetMaxHealth(maxLives);
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        isInvulnerable = true;
     }
 
     private void FixedUpdate()
@@ -43,13 +46,18 @@ public class BossInfinity : Unit
         if (lives <= maxLives / 2)
         {
             animator.SetBool("IsEnraged", true);
-            inRange = true;
+            controller.SetSecondStage();
         }
-        if (lives <= 0) Die();
+        if (lives <= 0)
+        {
+            Die();
+            controller.DisableAll();
+        }
     }
 
     public override void ReceiveDamage(int damage)
     {
+        if (isInvulnerable) return;
         lives -= damage;
         healthBar.SetHealth(lives);
         // Boss hurt animation

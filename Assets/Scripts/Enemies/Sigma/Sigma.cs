@@ -20,7 +20,7 @@ public class Sigma : Unit
     private void Awake()
     {
         InitialPosition = TargetPosition = transform.position;
-        Bullet = Resources.Load<Bullet>("Bullet");
+        Bullet = Resources.Load<Bullet>("BossInfinity/Bullet");
         Animator = GetComponent<Animator>();
     }
     
