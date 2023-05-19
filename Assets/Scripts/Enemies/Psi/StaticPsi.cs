@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class StaticPsi : Psi
@@ -52,7 +51,11 @@ public class StaticPsi : Psi
         Destroy(gameObject);
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) => HitCharacter(collision);
+
+    private void OnCollisionStay2D(Collision2D collision) => HitCharacter(collision);
+
+    private void HitCharacter(Collision2D collision)
     {
         var character = collision.gameObject.GetComponent<Character>();
         if (character is null) return;

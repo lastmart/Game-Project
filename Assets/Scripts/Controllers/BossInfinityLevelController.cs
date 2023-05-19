@@ -9,24 +9,18 @@ public class BossInfinityLevelController : MonoBehaviour
     public SpawnSystem firstStage;
     public SpawnSystem secondStage;
     public BossInfinity boss;
-
-    private void Start()
+    
+    public void SetFirstStage()
     {
         firstStage.isActive = true;
+        secondStage.isActive = false;
     }
 
-    private void FixedUpdate()
+    public void SetSecondStage()
     {
-        if (!boss.inRange) return;
-        if (boss.lives <= 0)
-        {
-            secondStage.isActive = firstStage.isActive = false;
-        }
-        else
-        {
-            secondStage.isActive = true;
-            firstStage.isActive = false;
-        }
-
+        firstStage.isActive = false;
+        secondStage.isActive = true;
     }
+
+    public void DisableAll() => firstStage.isActive = secondStage.isActive = false;
 }

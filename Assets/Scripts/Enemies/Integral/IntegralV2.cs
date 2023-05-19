@@ -18,7 +18,7 @@ public class IntegralV2 : Integral
 
     private void FixedUpdate()
     {
-        if (direction.y == 0 && (int)(Random.value * 1000) % 200 == 0)
+        if (direction.y == 0 && Random.Range(0,1000) % 200 == 0)
         {
             var y = transform.position.y > 0 ? -1 : 1;
             direction = new Vector3(0,y);

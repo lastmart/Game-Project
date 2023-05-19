@@ -35,7 +35,7 @@ public class SpawnSystem: MonoBehaviour
 
     protected virtual Enemies SelectEnemy(int spawnerNumber)
     {
-        return (Enemies)(Random.value * 10 % 2);
+        return (Enemies)Random.Range(0,2);
     }
 }
 
