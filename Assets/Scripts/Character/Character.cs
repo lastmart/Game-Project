@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class Character : Unit
 {
-    [SerializeField] public int lives = 3;
+    [SerializeField] public int lives;
     [SerializeField] private float speed = 4.0f;
     [SerializeField] private float jumpForce = 10.0f;
     [SerializeField] private float jumpTime = 0.25f;
@@ -30,10 +30,11 @@ public class Character : Unit
     private float jumpTimeCounter;
     private float nextAttackTime;
     public float attackRate = 2f;
+    public int maxLives = 3;
     
     private bool isJumping;
     private bool isGrounded;
-    private bool isFacingRight;
+    public bool isFacingRight;
     private bool inInvulnerability;
     
     
@@ -45,6 +46,7 @@ public class Character : Unit
 
     private void Awake()
     {
+        lives = maxLives;
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         transform = GetComponent<Transform>();
