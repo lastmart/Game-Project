@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ground Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 8192
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 1129835290, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 768762784, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 1649883828, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 160036247, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 107358326, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -1757424025, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 1113602410, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -1908760785, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 1563186675, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 2109003024, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 738806153, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 1326475366, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 328893763, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 679920425, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 1988557256, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 1506397073, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -276368435, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 690833180, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -132364787, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -1433352111, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 620967596, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 1266702094, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 2117997063, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 616025469, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 1199739131, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -869811041, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -1018969982, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -563787567, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -571451942, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 536173060, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 1694781146, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -1931955109, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 2062150005, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -1663941350, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 1468312731, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 2071450686, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -1524553068, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -1720044237, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 812263767, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 239543467, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -1770600271, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 1548305573, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -1009058071, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -779136046, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -716112423, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 1983267289, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: 941900484, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -1535628781, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  - {fileID: -1942654232, guid: 35e57bffd35f62746a9e31482bd53ae3, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Mossy - TileSet_2
+  - Mossy - TileSet_3
+  - Mossy - TileSet_0
+  - Mossy - TileSet_1
+  - Mossy - TileSet_6
+  - Mossy - TileSet_7
+  - Mossy - TileSet_4
+  - Mossy - TileSet_5
+  - Mossy - TileSet_8
+  - Mossy - TileSet_9
+  - Mossy - TileSet_33
+  - Mossy - TileSet_32
+  - Mossy - TileSet_31
+  - Mossy - TileSet_30
+  - Mossy - TileSet_37
+  - Mossy - TileSet_36
+  - Mossy - TileSet_35
+  - Mossy - TileSet_19
+  - Mossy - TileSet_34
+  - Mossy - TileSet_18
+  - Mossy - TileSet_39
+  - Mossy - TileSet_38
+  - Mossy - TileSet_11
+  - Mossy - TileSet_10
+  - Mossy - TileSet_13
+  - Mossy - TileSet_12
+  - Mossy - TileSet_15
+  - Mossy - TileSet_14
+  - Mossy - TileSet_17
+  - Mossy - TileSet_16
+  - Mossy - TileSet_20
+  - Mossy - TileSet_21
+  - Mossy - TileSet_22
+  - Mossy - TileSet_42
+  - Mossy - TileSet_23
+  - Mossy - TileSet_43
+  - Mossy - TileSet_24
+  - Mossy - TileSet_40
+  - Mossy - TileSet_25
+  - Mossy - TileSet_41
+  - Mossy - TileSet_26
+  - Mossy - TileSet_46
+  - Mossy - TileSet_27
+  - Mossy - TileSet_47
+  - Mossy - TileSet_28
+  - Mossy - TileSet_44
+  - Mossy - TileSet_29
+  - Mossy - TileSet_45
+  - Mossy - TileSet_48
+  m_RenderDataMap: {}
+  m_Tag: Ground Atlas
+  m_IsVariant: 0
