@@ -35,7 +35,14 @@ public class SpawnSystem: MonoBehaviour
 
     protected virtual Enemies SelectEnemy(int spawnerNumber)
     {
-        return (Enemies)Random.Range(0,2);
+        while (true)
+        {
+            var nextEnemy = (Enemies)Random.Range(0, 3);
+            if (nextEnemy is Enemies.Psi && spawnerNumber < 6 ||
+                nextEnemy is Enemies.Sigma && spawnerNumber >= 6) 
+                continue; 
+            return nextEnemy;
+        }
     }
 }
 

@@ -1,17 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class BossInfinity : Unit
 {
     [SerializeField] public int maxLives = 20;
     [SerializeField] public int lives;
 
+    public BossInfinityLevelController controller;
     public HealthBar healthBar;
     private new Rigidbody2D rigidbody;
     private Animator animator;
-    public BossInfinityLevelController controller;
 
     public bool isInvulnerable;
     private int CurrentLives { get => lives; set => lives = value; }
@@ -68,7 +67,7 @@ public class BossInfinity : Unit
         if (isInvulnerable) return;
         lives -= damage;
         healthBar.SetHealth(lives);
-        // Boss hurt animation
+        animator.SetTrigger("IsAttacked");
     }
 
     public Vector2 GetClosestTarget()
