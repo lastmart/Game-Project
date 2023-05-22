@@ -15,7 +15,7 @@ public class BossRun : StateMachineBehaviour
     {
         rigidbody = animator.GetComponent<Rigidbody2D>();
         boss = animator.GetComponent<BossInfinity>();
-        targetsPositions = boss.GetFirstStageWay;
+        targetsPositions = BossInfinity.GetFirstStageWay;
         currentTarget = boss.GetClosestTarget();
     }
 

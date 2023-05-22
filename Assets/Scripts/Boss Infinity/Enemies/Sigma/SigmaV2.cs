@@ -8,6 +8,7 @@ public class SigmaV2 : Sigma
 
     private void Awake()
     {
+        Damage = 1;
         InitialPosition = TargetPosition = transform.position;
         Bullet = Resources.Load<Bullet>("BossInfinity/BulletSt2");
         Animator = GetComponent<Animator>();

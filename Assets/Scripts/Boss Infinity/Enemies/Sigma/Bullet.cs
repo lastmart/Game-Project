@@ -6,10 +6,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 10.0f;
+    [SerializeField] private int damage = 1;
+    
     private Vector3 direction;
+    
     public Vector3 Direction { set => direction = value; }
-    public float Speed { set => speed = value; }
-
+    
     private void Start()
     {
         Destroy(gameObject, 3f);
@@ -26,6 +28,6 @@ public class Bullet : MonoBehaviour
     {
         var unit = col.GetComponent<Character>();
         if (unit is null) return;
-        unit.ReceiveDamage(1);
+        unit.ReceiveDamage(damage);
     }
 }

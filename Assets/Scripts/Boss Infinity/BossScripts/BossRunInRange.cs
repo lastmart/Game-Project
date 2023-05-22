@@ -17,7 +17,7 @@ public class BossRunInRange : StateMachineBehaviour
         rigidbody = animator.GetComponent<Rigidbody2D>();
         boss = animator.GetComponent<BossInfinity>();
         currentTarget = boss.GetClosestTarget();
-        targetsPositions = boss.GetSecondStageWay;
+        targetsPositions = BossInfinity.GetSecondStageWay;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

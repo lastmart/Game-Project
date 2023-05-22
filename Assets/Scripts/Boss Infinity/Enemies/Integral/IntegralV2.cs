@@ -12,6 +12,7 @@ public class IntegralV2 : Integral
     
     private void Start()
     {
+        Damage = 1;
         rigidbody = GetComponent<Rigidbody2D>();
         direction = transform.right;
     }
@@ -27,7 +28,6 @@ public class IntegralV2 : Integral
         var newPosition = Vector2.MoveTowards(position, position + direction,
             speed * Time.deltaTime);
         rigidbody.MovePosition(newPosition);
-        CheckCharacter();
     }
 }
 

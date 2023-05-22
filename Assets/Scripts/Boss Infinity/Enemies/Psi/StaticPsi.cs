@@ -23,7 +23,7 @@ public class StaticPsi : Psi
     {
         var position = transform.position;
         UpdateInvulnerability();
-        if ((position - TargetPosition).magnitude < 0.1) return;
+        if ((position - targetPosition).magnitude < 0.1) return;
         var newPosition = Vector2.MoveTowards(position, position + direction,
             speed * Time.deltaTime);
         rigidbody.MovePosition(newPosition);
@@ -51,11 +51,11 @@ public class StaticPsi : Psi
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) => HitCharacter(collision);
+    private void OnCollisionEnter2D(Collision2D collision) => Attack(collision);
 
-    private void OnCollisionStay2D(Collision2D collision) => HitCharacter(collision);
+    private void OnCollisionStay2D(Collision2D collision) => Attack(collision);
 
-    private void HitCharacter(Collision2D collision)
+    private void Attack(Collision2D collision)
     {
         var character = collision.gameObject.GetComponent<Character>();
         if (character is null) return;

@@ -41,11 +41,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1165276409736022104, guid: 6e97643180b41de4abc8b01a580778a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.85
+      value: 9.52945
       objectReference: {fileID: 0}
     - target: {fileID: 1165276409736022104, guid: 6e97643180b41de4abc8b01a580778a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.62
+      value: -4.2028685
       objectReference: {fileID: 0}
     - target: {fileID: 1165276409736022104, guid: 6e97643180b41de4abc8b01a580778a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -159,11 +159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  targetPosition: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  TargetPosition: {x: 0, y: 0, z: 0}
   timeOfInvulnerability: 0.5
   invulnerabilityDuration: 0
   healths: 3

@@ -6,13 +6,12 @@ public class Integral : Unit
 {
     [SerializeField] private float speed = 4.0f;
     
-    private const int Damage = 1;
     private new Rigidbody2D rigidbody;
     public Vector3 direction;
-    public LayerMask playerLayer;
     
     private void Start()
     {
+        Damage = 1;
         rigidbody = GetComponent<Rigidbody2D>();
         direction = transform.right;
     }
@@ -23,18 +22,10 @@ public class Integral : Unit
         var newPosition = Vector2.MoveTowards(position, position + direction,
             speed * Time.deltaTime);
         rigidbody.MovePosition(newPosition);
-        CheckCharacter();
     }
 
     public override void ReceiveDamage(int damage)
     {
         
-    }
-
-    protected void CheckCharacter()
-    {
-        var hitPlayer = Physics2D.OverlapCircle(transform.position, 1.0f, playerLayer);
-        if (hitPlayer is null) return;
-        hitPlayer.GetComponent<Character>().ReceiveDamage(Damage);
     }
 }

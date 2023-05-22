@@ -15,22 +15,30 @@ public class BossInfinity : Unit
 
     public bool isInvulnerable;
     private int CurrentLives { get => lives; set => lives = value; }
-    
-    public Dictionary<Vector2, Vector2> GetFirstStageWay { get; } = new()
+
+    static BossInfinity()
     {
-        { new Vector2(11,-4), new Vector2(11, 2) },
-        { new Vector2(11, 2), new Vector2(-11, 2) },
-        { new Vector2(-11, 2), new Vector2(-11, -4) },
-        { new Vector2(-11, -4), new Vector2(11, -4) }
-    };
+        GetFirstStageWay = new Dictionary<Vector2, Vector2>
+        {
+            { new Vector2(10,-4), new Vector2(10, 3) },
+            { new Vector2(10, 3), new Vector2(-10, 3) },
+            { new Vector2(-10, 3), new Vector2(-10, -4) },
+            { new Vector2(-10, -4), new Vector2(10, -4) }
+        };
+        
+        GetSecondStageWay = new Dictionary<Vector2, Vector2>()
+        {
+            { new Vector2(10,-4), new Vector2(10, 3) },
+            { new Vector2(10, 3), new Vector2(-10, -4) },
+            { new Vector2(-10, -4), new Vector2(-10, 3) },
+            { new Vector2(-10, 3), new Vector2(10, -4) }
+        };
+    }
     
-    public Dictionary<Vector2, Vector2> GetSecondStageWay { get; } = new()
-    {
-        { new Vector2(11,-4), new Vector2(11, 2) },
-        { new Vector2(11, 2), new Vector2(-11, -4) },
-        { new Vector2(-11, -4), new Vector2(-11, 2) },
-        { new Vector2(-11, 2), new Vector2(11, -4) }
-    };
+    public static Dictionary<Vector2, Vector2> GetFirstStageWay { get; } 
+    
+    public static Dictionary<Vector2, Vector2> GetSecondStageWay { get; }
+    
     
     private void Start()
     {
@@ -75,4 +83,8 @@ public class BossInfinity : Unit
     {
         animator.SetBool("IsDied", true);
     }
+
+    protected override void OnTriggerEnter2D(Collider2D col) { }
+
+    protected override void OnTriggerStay2D(Collider2D other) { }
 }
