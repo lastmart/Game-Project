@@ -6,8 +6,8 @@ using UnityEngine;
 public class SharpBush : MonoBehaviour
 {
     [SerializeField] private int damage = 1;
-    [SerializeField] private float verticalPower = 30.0f;
-    [SerializeField] private float horizontalPower = 10.0f;
+    [SerializeField] private float verticalPower = 60.0f;
+    [SerializeField] private float horizontalPower = 30.0f;
     private void OnCollisionEnter2D(Collision2D col) => Attack(col);
 
     private void OnCollisionStay2D(Collision2D collision) => Attack(collision);

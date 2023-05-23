@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  verticalPower: 30
+  verticalPower: 50
   horizontalPower: 10
 --- !u!70 &3467505793542163637
 CapsuleCollider2D:

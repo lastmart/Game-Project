@@ -145,7 +145,16 @@ public class Character : Unit
         }
         nextAttackTime = Time.time + 1f / attackRate;
     }
-    
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.CompareTag("Spores"))
+        {
+            ReceiveDamage(1);
+            // poisoned character animation
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         if (attackPoint is null) return;
