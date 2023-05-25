@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28336f62c08940bbb4e0e05d21e79105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkRadius: 12
 --- !u!95 &1980241305
 Animator:
   serializedVersion: 5

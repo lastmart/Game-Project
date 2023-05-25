@@ -42,12 +42,6 @@ public class FireFlower : StaticEnemy
         nextAttackTime = Time.time + 1f / attackRate;
     }
     
-    public override void ReceiveDamage(int damage)
-    {
-        lives -= damage;
-        if (lives <= 0) Die();
-    }
-    
     protected override void Die()
     {
         Destroy(gameObject);

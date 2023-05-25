@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mushroom : Unit
+public class Mushroom : StaticEnemy
 {
-    [SerializeField] private float startTimeBetweenSpawn = 1.0f;
+    [SerializeField] private float startTimeBetweenSpawn = 0.5f;
     private float timeBetweenSpawn;
     public GameObject spores;
     private Animator animator;
@@ -27,5 +27,10 @@ public class Mushroom : Unit
         {
             timeBetweenSpawn -= Time.deltaTime;
         }
+    }
+    
+    protected override void Die()
+    {
+        Destroy(gameObject);
     }
 }
