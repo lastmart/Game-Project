@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class StaticEnemy : Unit
 { 
-    [SerializeField] private int lives = 3;
+    [SerializeField] private int lives = 5;
     public Transform character;
     
     public override void ReceiveDamage(int damage)

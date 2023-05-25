@@ -18,7 +18,7 @@ public abstract class Unit : MonoBehaviour
 
     protected virtual void OnTriggerStay2D(Collider2D other) => Attack(other);
 
-    private void Attack(Collider2D collider)
+    protected void Attack(Collider2D collider)
     {
         var character = collider.GetComponent<Character>();
         if (character is null) return;

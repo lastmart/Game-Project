@@ -12,8 +12,8 @@ public class Fireball : MonoBehaviour
     
     private void Start()
     {
+        explosion = Resources.Load<GameObject>("RunAndGun/Effects/Explosion");
         Destroy(gameObject, 3f);
-        explosion = Resources.Load<GameObject>("RunAndGun/Enemies/Explosion");
     }
     
     private void FixedUpdate()

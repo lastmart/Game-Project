@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6243992901284495033}
   - component: {fileID: 6243992901284495032}
   - component: {fileID: 6243992901284495035}
-  - component: {fileID: 1382638970}
   - component: {fileID: 1980241305}
+  - component: {fileID: 679918540}
   m_Layer: 7
   m_Name: FireFlower
   m_TagString: Untagged
@@ -64,22 +64,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58e6e4c5e613dfe499630617396a8699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 3
   character: {fileID: 0}
   lives: 3
   attackRate: 0.5
---- !u!114 &1382638970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6243992901284495046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28336f62c08940bbb4e0e05d21e79105, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkRadius: 12
 --- !u!95 &1980241305
 Animator:
   serializedVersion: 5
@@ -101,6 +89,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &679918540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6243992901284495046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 779e41b09d0bfd24894f202f04a9515a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkRadius: 13
 --- !u!1 &6243992901905100909
 GameObject:
   m_ObjectHideFlags: 0

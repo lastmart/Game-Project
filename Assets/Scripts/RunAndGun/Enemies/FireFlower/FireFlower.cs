@@ -12,8 +12,8 @@ public class FireFlower : StaticEnemy
     
     private void Awake()
     {
-        fireEffect = Resources.Load<GameObject>("RunAndGun/Enemies/FireEffect");
-        fireball = Resources.Load<Fireball>("RunAndGun/Enemies/Fireball");
+        fireEffect = Resources.Load<GameObject>("RunAndGun/Effects/FireEffect");
+        fireball = Resources.Load<Fireball>("RunAndGun/Effects/Fireball");
         animator = gameObject.GetComponent<Animator>();
         nextAttackTime = Time.time + 1f / attackRate;
         Damage = 1;
