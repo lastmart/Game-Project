@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mushroom : MonoBehaviour
+public class Mushroom : Unit
 {
     [SerializeField] private float startTimeBetweenSpawn = 1.0f;
     private float timeBetweenSpawn;

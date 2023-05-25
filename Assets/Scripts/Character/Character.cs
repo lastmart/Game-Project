@@ -24,7 +24,7 @@ public class Character : Unit
     public Transform attackPoint;
     public Transform groundPosition;
     public LayerMask enemyLayers;
-    [FormerlySerializedAs("groundLayer")] public LayerMask groundLayers;
+    public LayerMask groundLayers;
     
     private float invulnerabilityTimer;
     private float jumpTimeCounter;
@@ -139,8 +139,7 @@ public class Character : Unit
         var hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (var enemy in hitEnemies)
         {
-            enemy.GetComponent<BossInfinity>()?.ReceiveDamage(attackDamage);
-            enemy.GetComponent<StaticPsi>()?.ReceiveDamage(attackDamage);
+            enemy.GetComponent<Unit>()?.ReceiveDamage(attackDamage);
             Debug.Log("We hit "+ enemy.name);
         }
         nextAttackTime = Time.time + 1f / attackRate;
@@ -157,7 +156,7 @@ public class Character : Unit
 
     private void OnDrawGizmosSelected()
     {
-        if (attackPoint is null) return;
+        if (attackPoint is null || groundPosition is null) return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
         Gizmos.DrawWireSphere(groundPosition.position, groundCheck);
     }
