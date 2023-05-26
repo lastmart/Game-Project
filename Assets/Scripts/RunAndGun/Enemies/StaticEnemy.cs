@@ -13,4 +13,8 @@ public class StaticEnemy : Unit
         lives -= damage;
         if (lives <= 0) Die();
     }
+    
+    protected override void OnTriggerEnter2D(Collider2D col) { }
+
+    protected override void OnTriggerStay2D(Collider2D other) { }
 }

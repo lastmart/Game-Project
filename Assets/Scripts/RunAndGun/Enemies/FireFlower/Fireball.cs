@@ -24,10 +24,10 @@ public class Fireball : MonoBehaviour
             speed * Time.deltaTime);
     }
     
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         var character = col.gameObject.GetComponent<Character>();
-        Destroy(gameObject);
+        if(!col.gameObject.CompareTag("OneWayPlatform"))Destroy(gameObject);
         Instantiate(explosion, transform.position, Quaternion.identity);
         character?.ReceiveDamage(damage);
     }

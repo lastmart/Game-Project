@@ -10,7 +10,9 @@ public class HorizontalChecker : CharacterChecker
     
     private void FixedUpdate()
     {
-        Enemy.enabled = Mathf.Abs(Character.position.x - EnemyPosition.x) < horizontalDiff;
+        var characterPosition = Character.position;
+        Enemy.enabled = Mathf.Abs(characterPosition.x - EnemyPosition.x) < horizontalDiff
+                        && EnemyPosition.y >= characterPosition.y;
         if(Enemy.enabled) enabled = false;
     }
 }
