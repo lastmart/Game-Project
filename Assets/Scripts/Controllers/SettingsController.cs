@@ -11,6 +11,9 @@ public class SettingsController : MonoBehaviour
     [SerializeField] private AudioMixer effectsMixer;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider effectsSlider;
+    [SerializeField] private Toggle easyToggle;
+    [SerializeField] private Toggle normalToggle;
+    [SerializeField] private Toggle hardToggle;
     void Start()
     {
         LoadSettings();
@@ -22,6 +25,10 @@ public class SettingsController : MonoBehaviour
         
     }
 
+    public void SetDifficulty(Toggle toggle)
+    {
+    }
+    
     public void SetMusicVolume(float desiredVolume)
     {
         musicMixer.SetFloat("MasterVolume", Mathf.Log10(desiredVolume) * 20);
@@ -36,9 +43,11 @@ public class SettingsController : MonoBehaviour
     {
         musicMixer.GetFloat("MasterVolume", out var musicVolume);
         PlayerPrefs.SetFloat("mVolume", musicVolume);
+        PlayerPrefs.SetFloat("mSlider", musicSlider.value);
 
         effectsMixer.GetFloat("MasterVolume", out var effectsVolume);
         PlayerPrefs.SetFloat("eVolume", effectsVolume);
+        PlayerPrefs.SetFloat("eSlider", effectsSlider.value);
     }
 
     private void LoadSettings()
@@ -46,5 +55,7 @@ public class SettingsController : MonoBehaviour
         musicMixer.SetFloat("MasterVolume", PlayerPrefs.HasKey("mVolume") 
             ? PlayerPrefs.GetFloat("mVolume") 
             : 0.001f);
+        musicSlider.value = PlayerPrefs.GetFloat("mSlider");
+        effectsSlider.value = PlayerPrefs.GetFloat("eSlider");
     }
 }

@@ -7,7 +7,7 @@ public class Paused : MonoBehaviour
 {
     [SerializeField] private GameObject pause;
 
-    void Start()
+    private void Start()
     {
         pause.SetActive(false);
     }
@@ -15,11 +15,9 @@ public class Paused : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            pause.SetActive(true);
-            Time.timeScale = 0;
-        }
+        if (!Input.GetKeyDown(KeyCode.Escape)) return;
+        pause.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void PauseOff()
@@ -30,13 +28,8 @@ public class Paused : MonoBehaviour
     
     public void Menu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
         Time.timeScale = 1;
     }
     
-    public void Settings()
-    {
-        SceneManager.LoadScene(2);
-        Time.timeScale = 1;
-    }
 }
