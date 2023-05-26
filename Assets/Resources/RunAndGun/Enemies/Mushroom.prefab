@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 3
   character: {fileID: 0}
-  startTimeBetweenSpawn: 3
+  startTimeBetweenSpawn: 2
   spores: {fileID: 8605526041917622642, guid: 1844854468198f24aabec83cd660f563, type: 3}
 --- !u!95 &1925347294
 Animator:
