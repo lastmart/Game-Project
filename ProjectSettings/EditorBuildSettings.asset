@@ -6,12 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/InfinityBoss.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: fdfd41d99626f73429e7b84809f43e72
   - enabled: 1
     path: Assets/Scenes/SettingsScene.unity
     guid: dec517358ecfa3440927b9c172851a10
+  - enabled: 1
+    path: Assets/Scenes/LevelSelector.unity
+    guid: 1a69b6ac574a4e840bbbd88593c5bc89
+  - enabled: 1
+    path: Assets/Scenes/Comics_1.unity
+    guid: 4d94e1162e7e1214bb35863d61fed8f7
+  - enabled: 1
+    path: Assets/Scenes/InfinityBoss.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Comics_2.unity
+    guid: a2c91f2742d98ea49b736775b54e9810
+  - enabled: 1
+    path: Assets/Scenes/RunAndGun.unity
+    guid: 0c80c9c319bcacc409c67fff3ef7242e
   m_configObjects: {}

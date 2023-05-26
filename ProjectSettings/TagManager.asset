@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - OneWayPlatform
+  - Menu_Music
   - Spores
   layers:
   - Default
