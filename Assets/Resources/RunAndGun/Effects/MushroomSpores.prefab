@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
+      scalar: 0.7
       minScalar: 0.17
       maxCurve:
         serializedVersion: 2
@@ -169,8 +169,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 8
-      minScalar: 4
+      scalar: 4
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -608,7 +608,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3845,7 +3845,7 @@ ParticleSystem:
     collidesWith:
       serializedVersion: 2
       m_Bits: 72
-    maxCollisionShapes: 256
+    maxCollisionShapes: 100
     quality: 0
     voxelSize: 0.5
     collisionMessages: 1

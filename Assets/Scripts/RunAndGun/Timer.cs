@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,8 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        delta = 0;
+        delta = 1;
+        StartCoroutine(TimeFlow());
     }
 
     IEnumerator TimeFlow()
@@ -33,9 +35,14 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public void StartStop(int delta)
+    public void StartTimer() => delta = 1;
+
+    public void StopTimer() => delta = 0;
+
+    public void ReloadTimer()
     {
-        this.delta = delta;
+        sec = -1;
+        min = 0;
+        StartTimer();
     }
-    
 }

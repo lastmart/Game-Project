@@ -26,8 +26,9 @@ public class Fireball : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if(col.gameObject.CompareTag("OneWayPlatform")) return;
         var character = col.gameObject.GetComponent<Character>();
-        if(!col.gameObject.CompareTag("OneWayPlatform"))Destroy(gameObject);
+        Destroy(gameObject);
         Instantiate(explosion, transform.position, Quaternion.identity);
         character?.ReceiveDamage(damage);
     }

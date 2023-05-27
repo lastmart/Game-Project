@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 873367303}
   - component: {fileID: 873367304}
-  - component: {fileID: 1428293757}
   m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
@@ -85,18 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1428293757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873367302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28336f62c08940bbb4e0e05d21e79105, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1202415221064300373
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 3
   character: {fileID: 0}
-  startTimeBetweenSpawn: 2
+  startTimeBetweenSpawn: 2.5
   spores: {fileID: 8605526041917622642, guid: 1844854468198f24aabec83cd660f563, type: 3}
 --- !u!95 &1925347294
 Animator:

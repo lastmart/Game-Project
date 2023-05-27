@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383261218634057666}
   - component: {fileID: 5567249933071917155}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "\u043A\u043E\u043B\u044E\u0447\u0435\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: -5607167830572320542}
   - component: {fileID: 450658497}
   - component: {fileID: 3820429170607047033}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: SharpBush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 4998050670895794786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12, y: -26.9, z: 0}
-  m_LocalScale: {x: 0.6593626, y: 0.59844, z: 1}
+  m_LocalScale: {x: 0.51842386, y: 0.4832403, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 383261218634057666}
