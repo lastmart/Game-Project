@@ -9,6 +9,7 @@ public class BossInfinity : Unit
 
     public BossInfinityLevelController controller;
     public HealthBar healthBar;
+    public GameObject hurtEffect;
     private new Rigidbody2D rigidbody;
     private Animator animator;
 
@@ -68,6 +69,7 @@ public class BossInfinity : Unit
         lives -= damage;
         healthBar.SetHealth(lives);
         animator.SetTrigger("IsAttacked");
+        Instantiate(hurtEffect, transform.position, Quaternion.identity);
         UpdateStageState();
     }
 

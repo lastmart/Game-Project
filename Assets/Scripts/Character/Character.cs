@@ -9,13 +9,12 @@ public class Character : Unit
     [SerializeField] private float speed = 4.0f;
     [SerializeField] private float jumpForce = 10.0f;
     [SerializeField] private float jumpTime = 0.25f;
-    [SerializeField] private float invulnerabilityDuration;
-    [SerializeField] private float timeOfInvulnerability = 1.5f;
+    [SerializeField] private float timeOfInvulnerability = 0.6f;
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private float groundCheck = 0.3f;
-    
-    private static readonly int State = Animator.StringToHash("State");
+    public float attackRate = 2f;
+    public int maxLives = 3;
 
     private new Rigidbody2D rigidbody;
     private Animator animator;
@@ -30,14 +29,13 @@ public class Character : Unit
     private float invulnerabilityTimer;
     private float jumpTimeCounter;
     private float nextAttackTime;
-    public float attackRate = 2f;
-    public int maxLives = 3;
     
     private bool isJumping;
     private bool isGrounded;
     public bool isFacingRight;
     public bool inInvulnerability;
     
+    private static readonly int State = Animator.StringToHash("State");
     
     private CharacterState state
     {
@@ -71,8 +69,11 @@ public class Character : Unit
     private void UpdateInvulnerability()
     {
         if (!inInvulnerability) return;
-        invulnerabilityDuration -= Time.deltaTime;
-        if (invulnerabilityDuration < 0) inInvulnerability = false;
+        invulnerabilityTimer -= Time.deltaTime;
+        if (invulnerabilityTimer < 0)
+        {
+            inInvulnerability = false;
+        }
     }
 
     private void Run()
@@ -119,18 +120,18 @@ public class Character : Unit
     public override void ReceiveDamage(int damage)
     {
         if (inInvulnerability) return;
+        animator.SetTrigger("IsAttacked");
         lives -= damage;
+        state = CharacterState.Attacked;
         charLivesBar.Refresh();
         if (lives <= 0) Die();
         inInvulnerability = true;
-        invulnerabilityDuration = timeOfInvulnerability;
-        animator.SetTrigger("IsAttacked");
+        invulnerabilityTimer = timeOfInvulnerability;
     }
 
     protected override void Die()
     {
         manager.ShowGameOverWindow();
-        Destroy(gameObject);
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -169,5 +170,6 @@ public enum CharacterState
     Idle = 0,
     Run = 1,
     Jump = 2,
-    Died = 3
+    Died = 3,
+    Attacked = 4
 }

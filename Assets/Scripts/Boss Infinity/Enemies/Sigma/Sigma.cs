@@ -21,7 +21,7 @@ public class Sigma : Unit
     {
         Damage = 1;
         InitialPosition = TargetPosition = transform.position;
-        Bullet = Resources.Load<Bullet>("BossInfinity/Bullet");
+        Bullet = Resources.Load<Bullet>("BossInfinity/Enemies/Auxiliaries/Bullet");
         Animator = GetComponent<Animator>();
     }
     

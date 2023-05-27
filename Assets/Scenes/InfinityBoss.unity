@@ -584,7 +584,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
-  startTimeBetweenSpawn: 2
+  startTimeBetweenSpawn: 3
+  reloadFrequency: 20
 --- !u!4 &191411675 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2626020123338460027, guid: 8e47b1ce959485e438eee33b815b21b5, type: 3}
@@ -1123,6 +1124,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1243,6 +1245,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 510968590}
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38dfeac6c3948c64793d159fc42a9618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &533209452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2626020123338460027, guid: 8e47b1ce959485e438eee33b815b21b5, type: 3}
@@ -2933,7 +2947,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
-  startTimeBetweenSpawn: 4
+  startTimeBetweenSpawn: 2
+  reloadFrequency: 20
 --- !u!4 &1425091879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2052403176554877050, guid: f94c55c698f9c0e4c9590b398b418ac8, type: 3}
@@ -4764,7 +4779,6 @@ GameObject:
   - component: {fileID: 2044617863}
   - component: {fileID: 2044617862}
   - component: {fileID: 2044617861}
-  - component: {fileID: 2044617864}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -4837,14 +4851,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420028}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 519420035}
+        m_TargetAssemblyTypeName: Controllers.MenuScript, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4887,20 +4901,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044617859}
   m_CullTransparentMesh: 1
---- !u!114 &2044617864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2044617859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852a3d096f3b2aa4f896a33a9c24fe47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: {fileID: 0}
-  timer: {fileID: 0}
 --- !u!1 &2070844661
 GameObject:
   m_ObjectHideFlags: 0
@@ -5021,6 +5021,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 659770164729863209, guid: e7e5757f053c87f41a53b0a0486e9fce, type: 3}
+      propertyPath: maxLives
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 659770164729863209, guid: e7e5757f053c87f41a53b0a0486e9fce, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1504770003}
@@ -5028,6 +5032,10 @@ PrefabInstance:
       propertyPath: controller
       value: 
       objectReference: {fileID: 2019583993}
+    - target: {fileID: 659770164729863209, guid: e7e5757f053c87f41a53b0a0486e9fce, type: 3}
+      propertyPath: hurtEffect
+      value: 
+      objectReference: {fileID: 8335863119818842212, guid: f19e5568cc7bdd0438bda1aaf21e4c83, type: 3}
     - target: {fileID: 659770164729863212, guid: e7e5757f053c87f41a53b0a0486e9fce, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5087,6 +5095,10 @@ PrefabInstance:
     - target: {fileID: 659770164945937300, guid: e7e5757f053c87f41a53b0a0486e9fce, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 659770164945937300, guid: e7e5757f053c87f41a53b0a0486e9fce, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 659770164945937301, guid: e7e5757f053c87f41a53b0a0486e9fce, type: 3}
       propertyPath: m_LocalScale.y

@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7750727728309967335, guid: e57276cdf892d93458a3581b398148de, type: 3}
       propertyPath: m_Name
-      value: Spawner (7)
+      value: SpawnerUnderGround
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7750727728309967334, guid: e57276cdf892d93458a3581b398148de, type: 3}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fcb1485634cff4469ad610a03968534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadFrequency: 20
+  reloadFrequency: 15
   maxCapacity: 3
   integral: {fileID: 4111172933383525027, guid: e33ee85a51963b74d86f768a3a1900dd, type: 3}
   psi: {fileID: 1165276409736022100, guid: 6e97643180b41de4abc8b01a580778a6, type: 3}

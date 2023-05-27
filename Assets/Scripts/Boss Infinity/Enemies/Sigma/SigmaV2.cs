@@ -10,7 +10,7 @@ public class SigmaV2 : Sigma
     {
         Damage = 1;
         InitialPosition = TargetPosition = transform.position;
-        Bullet = Resources.Load<Bullet>("BossInfinity/BulletSt2");
+        Bullet = Resources.Load<Bullet>("BossInfinity/Enemies/Auxiliaries/BulletSt2");
         Animator = GetComponent<Animator>();
         var up = firePoint.up;
         var right = firePoint.right;

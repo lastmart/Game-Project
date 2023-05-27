@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1170d3bcb59874d938d4aa61cd6b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadFrequency: 20
+  reloadFrequency: 15
   maxCapacity: 3
   integral: {fileID: 1404647507775714730, guid: d499fe79dc343c64ab8b8514277a43d1, type: 3}
   psi: {fileID: 1537129243815504761, guid: 316548f77c4c8ac4c806faea5bd9ae6f, type: 3}
   sigma: {fileID: 4535831761859142648, guid: e9c98bc81b3bb7e4eaf5cc7fd0243267, type: 3}
   currentCapacity: 0
+  psiIsSpawned: 0

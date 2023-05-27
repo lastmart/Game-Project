@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1516697441417271527
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2853370949080490551, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180468736442245599, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180468736442245599, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.852148
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180468736442245599, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.5233395
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180468736442245599, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180468736442245599, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180468736442245599, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180468736442245599, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180468736442245599, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180468736442245599, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180468736442245599, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180468736442245599, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650890254122640664, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: lengthInSec
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650890254122640664, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: UVModule.cycles
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650890254122640664, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650890254122640664, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650890254122640664, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650890254122640664, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: UVModule.sprites.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: be5ffecbe7fcaf547a5942b8ada13e64, type: 3}
+    - target: {fileID: 6650890254122640664, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].cycleCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650890254122640664, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395626499505617027, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
+      propertyPath: m_Name
+      value: BossHurt
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 06840ede58b29bc449f7a513762733e7, type: 3}
