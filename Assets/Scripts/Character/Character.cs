@@ -25,6 +25,7 @@ public class Character : Unit
     public Transform groundPosition;
     public LayerMask enemyLayers;
     public LayerMask groundLayers;
+    public LevelManager manager;
     
     private float invulnerabilityTimer;
     private float jumpTimeCounter;
@@ -35,7 +36,7 @@ public class Character : Unit
     private bool isJumping;
     private bool isGrounded;
     public bool isFacingRight;
-    private bool inInvulnerability;
+    public bool inInvulnerability;
     
     
     private CharacterState state
@@ -128,7 +129,8 @@ public class Character : Unit
 
     protected override void Die()
     {
-        
+        manager.ShowGameOverWindow();
+        Destroy(gameObject);
     }
 
     // ReSharper disable Unity.PerformanceAnalysis

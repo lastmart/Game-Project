@@ -20,7 +20,7 @@ public class BossInfinityAppearance : StateMachineBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         var bossInfinity = animator.GetComponent<BossInfinity>();
-        bossInfinity.controller.SetFirstStage();
+        bossInfinity.controller.Stage = BossInfinityStages.First;
         bossInfinity.isInvulnerable = false;
     }
 

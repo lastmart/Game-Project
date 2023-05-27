@@ -48,17 +48,17 @@ public class BossInfinity : Unit
         isInvulnerable = true;
     }
 
-    private void FixedUpdate()
+    private void UpdateStageState()
     {
         if (lives <= maxLives / 2)
         {
+            controller.Stage = BossInfinityStages.Second;
             animator.SetBool("IsEnraged", true);
-            controller.SetSecondStage();
         }
         if (lives <= 0)
         {
+            controller.Stage = BossInfinityStages.End;
             Die();
-            controller.DisableAll();
         }
     }
 
@@ -68,6 +68,7 @@ public class BossInfinity : Unit
         lives -= damage;
         healthBar.SetHealth(lives);
         animator.SetTrigger("IsAttacked");
+        UpdateStageState();
     }
 
     public Vector2 GetClosestTarget()
