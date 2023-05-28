@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,6 +8,13 @@ public class LevelManager : MonoBehaviour
     
     public virtual void ShowGameOverWindow()
     {
+        character.enabled = false;
+        StartCoroutine(WaitAndShow(3));
+    }
+
+    private IEnumerator WaitAndShow(int seconds)
+    {
+        yield return new WaitForSecondsRealtime(seconds);
         gameOverWindow.SetActive(true);
     }
 }
