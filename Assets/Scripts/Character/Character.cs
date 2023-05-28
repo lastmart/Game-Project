@@ -131,6 +131,7 @@ public class Character : Unit
 
     protected override void Die()
     {
+        state = CharacterState.Died;
         manager.ShowGameOverWindow();
     }
 
