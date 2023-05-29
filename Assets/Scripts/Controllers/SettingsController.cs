@@ -11,9 +11,6 @@ public class SettingsController : MonoBehaviour
     [SerializeField] private AudioMixer effectsMixer;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider effectsSlider;
-    [SerializeField] private Toggle easyToggle;
-    [SerializeField] private Toggle normalToggle;
-    [SerializeField] private Toggle hardToggle;
     void Start()
     {
         LoadSettings();
