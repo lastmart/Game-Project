@@ -8,7 +8,6 @@ public class BossInfinityLevelController : LevelManager
 {
     public SpawnSystem firstStage;
     public SpawnSystem secondStage;
-    public BossInfinity boss;
     private BossInfinityStages stage;
 
     private void Start()
@@ -32,7 +31,7 @@ public class BossInfinityLevelController : LevelManager
                     break;
                 case BossInfinityStages.End:
                     DisableAllSpawners();
-                    character.enabled = false;
+                    ShowWinWindow();
                     break;
             }
         }

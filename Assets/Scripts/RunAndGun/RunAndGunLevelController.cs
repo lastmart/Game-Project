@@ -1,29 +1,32 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
-using Controllers;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RunAndGunLevelController : LevelManager
 {
     public Timer timer;
-    public PostProcessVolume lights;
     public CinemachineVirtualCamera cmn;
+    public Text score;
     
     public override void ShowGameOverWindow()
     {
-        lights.enabled = false;
         cmn.m_Follow = cmn.transform;
         base.ShowGameOverWindow();
         timer.StopTimer();
-        Destroy(character);
+    }
+
+    protected override void ShowWinWindow()
+    {
+        timer.StopTimer();
+        winWindow.SetActive(true);
+        character.enabled = false;
+        score.text = $"Your score is: {timer.timerText.text}";
+        
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player")) SceneManager.LoadScene(0);
+        if (col.CompareTag("Player")) ShowWinWindow();
     }
 }

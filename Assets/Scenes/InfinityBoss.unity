@@ -2755,17 +2755,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2626020123338460027, guid: 8e47b1ce959485e438eee33b815b21b5, type: 3}
   m_PrefabInstance: {fileID: 794052350}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1197587303 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 659770164729863209, guid: e7e5757f053c87f41a53b0a0486e9fce, type: 3}
-  m_PrefabInstance: {fileID: 659770164602686767}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f012fff76967f004b8dfea9ead746fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1268591085 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2626020123338460027, guid: 8e47b1ce959485e438eee33b815b21b5, type: 3}
@@ -4248,7 +4237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1727186364
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4269,7 +4258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.7999878, y: 0.69999695}
+  m_AnchoredPosition: {x: -2.7999878, y: 0.7000122}
   m_SizeDelta: {x: 39.09, y: 43.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1727186365
@@ -4933,9 +4922,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 10719346}
   gameOverWindow: {fileID: 887037478}
+  winWindow: {fileID: 1727186363}
   firstStage: {fileID: 1419226409}
   secondStage: {fileID: 191343083}
-  boss: {fileID: 1197587303}
 --- !u!4 &2019583994
 Transform:
   m_ObjectHideFlags: 0
