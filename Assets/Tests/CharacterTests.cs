@@ -1,26 +1,59 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using NUnit.Framework;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.TestTools;
+using GameObject = UnityEngine.GameObject;
+using Object = UnityEngine.Object;
 
 public class CharacterTests
 {
-    // A Test behaves as an ordinary method
-    [Test]
-    public void CharacterTestsSimplePasses()
+    private Character character;
+    
+    [SetUp]
+    public void SetUp()
     {
-        var character = new Character();
-        Assert.True(true);
+        var characterObj = MonoBehaviour.Instantiate(Resources.Load("Character")) as GameObject;
+        character = characterObj?.GetComponent<Character>();
+        
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator CharacterTestsWithEnumeratorPasses()
+    [TearDown]
+    public void TearDown()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        Object.Destroy(character.gameObject);
     }
+    
+    [UnityTest]
+    public IEnumerator DoNothingWhenInstantiate()
+    {
+        var position = character.transform.position;
+        var initialPos = new Vector3(position.x, position.y, position.z);
+        yield return new WaitForSeconds(0.3f);
+        Assert.True(initialPos.Equals(position));
+    }
+
+    [UnityTest]
+    public IEnumerator CharacterInvulnerability()
+    {
+        character.inInvulnerability = true;
+        yield return new WaitForSeconds(0.6f);
+        Assert.False(character.inInvulnerability);
+    }
+
+    [UnityTest]
+    public void CharacterReceiveDamage()
+    {
+        var lives = character.lives;
+        const int damage = 1;
+        character.ReceiveDamage(damage);
+        Assert.Equals(lives, character.lives - damage);
+        Assert.True(character.inInvulnerability);
+    }
+    
+    
 }

@@ -2,17 +2,17 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Integral : Unit
+public class Integral : Enemy
 {
     [SerializeField] private float speed = 4.0f;
     
-    private new Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     public Vector3 direction;
     
     private void Start()
     {
         Damage = 1;
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         direction = transform.right;
     }
     
@@ -21,7 +21,7 @@ public class Integral : Unit
         var position = transform.position;
         var newPosition = Vector2.MoveTowards(position, position + direction,
             speed * Time.deltaTime);
-        rigidbody.MovePosition(newPosition);
+        rb.MovePosition(newPosition);
     }
 
     public override void ReceiveDamage(int damage)

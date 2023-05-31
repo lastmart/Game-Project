@@ -4258,7 +4258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.7999878, y: 0.7000122}
+  m_AnchoredPosition: {x: -2.8000488, y: 0.7000122}
   m_SizeDelta: {x: 39.09, y: 43.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1727186365
@@ -5647,12 +5647,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2019583993}
     - target: {fileID: 8291221089162530436, guid: 8fbf4b2842cf61d4e96010db97a03c5f, type: 3}
+      propertyPath: jumpForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291221089162530436, guid: 8fbf4b2842cf61d4e96010db97a03c5f, type: 3}
       propertyPath: charLivesBar
       value: 
       objectReference: {fileID: 1041276310}
+    - target: {fileID: 8291221089162530436, guid: 8fbf4b2842cf61d4e96010db97a03c5f, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 2019583993}
     - target: {fileID: 8291221089162530439, guid: 8fbf4b2842cf61d4e96010db97a03c5f, type: 3}
       propertyPath: m_Name
       value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291221089162530439, guid: 8fbf4b2842cf61d4e96010db97a03c5f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fbf4b2842cf61d4e96010db97a03c5f, type: 3}

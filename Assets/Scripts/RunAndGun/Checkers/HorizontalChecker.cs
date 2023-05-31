@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class HorizontalChecker : CharacterChecker
@@ -10,9 +6,9 @@ public class HorizontalChecker : CharacterChecker
     
     private void FixedUpdate()
     {
-        var characterPosition = Character.position;
-        Enemy.enabled = Mathf.Abs(characterPosition.x - EnemyPosition.x) < horizontalDiff
-                        && EnemyPosition.y >= characterPosition.y;
-        if(Enemy.enabled) enabled = false;
+        var characterPosition = character.position;
+        enemy.enabled = Mathf.Abs(characterPosition.x - enemyPosition.x) < horizontalDiff
+                        && enemyPosition.y >= characterPosition.y;
+        if(enemy.enabled) enabled = false;
     }
 }

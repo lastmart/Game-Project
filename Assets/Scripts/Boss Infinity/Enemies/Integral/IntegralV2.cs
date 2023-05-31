@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,12 +5,12 @@ public class IntegralV2 : Integral
 {
     [SerializeField] private float speed = 5.0f;
     
-    private new Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     
     private void Start()
     {
         Damage = 1;
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         direction = transform.right;
     }
 
@@ -27,7 +24,7 @@ public class IntegralV2 : Integral
         var position = transform.position;
         var newPosition = Vector2.MoveTowards(position, position + direction,
             speed * Time.deltaTime);
-        rigidbody.MovePosition(newPosition);
+        rb.MovePosition(newPosition);
     }
 }
 

@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class CharacterChecker : MonoBehaviour
 {
-    protected Vector3 EnemyPosition;
-    protected Transform Character;
-    protected StaticEnemy Enemy;
+    protected Transform character;
+    protected Vector3 enemyPosition;
+    protected StaticEnemy enemy;
 
     private void Start()
     {
-        Enemy = gameObject.GetComponent<StaticEnemy>() ?? 
+        enemy = gameObject.GetComponent<StaticEnemy>() ?? 
                 gameObject.GetComponentInChildren<StaticEnemy>();
-        Character = Enemy.character.transform;
-        EnemyPosition = transform.position;
+        character = enemy.characterPos.transform;
+        enemyPosition = transform.position;
     }
 }

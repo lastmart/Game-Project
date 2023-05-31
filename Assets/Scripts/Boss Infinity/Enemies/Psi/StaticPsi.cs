@@ -7,7 +7,6 @@ public class StaticPsi : Psi
     [SerializeField] private float invulnerabilityDuration;
     [SerializeField] private int healths = 3;
     
-    private const int Damage = 1;
     private float invulnerabilityTimer;
     private bool inInvulnerability;
     
@@ -17,6 +16,7 @@ public class StaticPsi : Psi
     
     protected override void Start()
     {
+        Damage = 1;
         rigidbody = GetComponent<Rigidbody2D>();
     }
     

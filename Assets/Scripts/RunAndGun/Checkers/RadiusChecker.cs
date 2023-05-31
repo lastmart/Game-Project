@@ -8,6 +8,6 @@ public class RadiusChecker : CharacterChecker
     
     private void FixedUpdate()
     {
-        Enemy.enabled = (Character.position - EnemyPosition).magnitude < checkRadius; 
+        enemy.enabled = (character.position - enemyPosition).magnitude < checkRadius; 
     }
 }

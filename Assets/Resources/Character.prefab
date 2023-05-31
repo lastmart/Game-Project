@@ -246,19 +246,19 @@ MonoBehaviour:
   timeOfInvulnerability: 0.6
   attackRange: 0.8
   attackDamage: 1
-  groundCheck: 0.3
+  groundCheckRadius: 0.3
   attackRate: 2
   maxLives: 3
   charLivesBar: {fileID: 0}
-  attackPoint: {fileID: 8291221088022711957}
   groundPosition: {fileID: 166683440}
+  attackPoint: {fileID: 8291221088022711957}
+  levelManager: {fileID: 0}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 192
   groundLayers:
     serializedVersion: 2
     m_Bits: 320
-  manager: {fileID: 0}
   isFacingRight: 0
   inInvulnerability: 0
 --- !u!114 &8291221089162530433

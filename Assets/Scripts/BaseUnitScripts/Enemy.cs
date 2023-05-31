@@ -1,19 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Unit : MonoBehaviour
+public class Enemy : Unit
 {
-    protected int Damage { get; set; }
-    
-    public virtual void ReceiveDamage(int damage)
-    {
-       
-    }
-
-    protected virtual void Die()
-    {
-        Destroy(gameObject);
-    }
-
     protected virtual void OnTriggerEnter2D(Collider2D col) => Attack(col);
 
     protected virtual void OnTriggerStay2D(Collider2D other) => Attack(other);
@@ -24,5 +14,5 @@ public abstract class Unit : MonoBehaviour
         if (character is null) return;
         character.ReceiveDamage(Damage);
     }
-    
+
 }

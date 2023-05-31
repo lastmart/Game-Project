@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SharpBush : MonoBehaviour
+public class SharpBush : StaticEnemy
 {
     [SerializeField] private int damage = 1;
     [SerializeField] private float verticalPower = 60.0f;

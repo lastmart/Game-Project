@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class FireFlower : StaticEnemy
 {
-    [SerializeField] private int lives = 3;
     private GameObject fireEffect;
     private Fireball fireball;
     private Animator animator;
@@ -36,7 +35,7 @@ public class FireFlower : StaticEnemy
         var transform1 = transform;
         var flowerPosition = transform1.position;
         var attackPoint = flowerPosition + transform1.up * 5;
-        var direction = character.position - attackPoint;
+        var direction = characterPos.position - attackPoint;
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Instantiate(fireball, attackPoint, Quaternion.Euler(0, 0, angle));
         nextAttackTime = Time.time + 1f / attackRate;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Psi : Unit
+public class Psi : Enemy
 {
     [SerializeField] protected float speed = 4.0f;
     [SerializeField] protected Vector3 targetPosition;

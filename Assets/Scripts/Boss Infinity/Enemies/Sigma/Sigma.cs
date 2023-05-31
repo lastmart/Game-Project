@@ -4,49 +4,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Sigma : Unit
+public class Sigma : Enemy
 {
-    [SerializeField] private int maxShots = 5;
+    [SerializeField] protected int maxShots = 5;
     [SerializeField] private float speed = 1.0f;
     
     public Transform firePoint;
-    protected Animator Animator;
-    protected Bullet Bullet;
+    protected Animator animator;
+    protected Bullet bullet;
 
-    protected int ShotsNumber;
-    protected Vector3 InitialPosition;
-    protected Vector3 TargetPosition;
+    protected int shotsNumber;
+    protected Vector3 initialPosition;
+    protected Vector3 targetPosition;
 
     private void Awake()
     {
         Damage = 1;
-        InitialPosition = TargetPosition = transform.position;
-        Bullet = Resources.Load<Bullet>("BossInfinity/Enemies/Auxiliaries/Bullet");
-        Animator = GetComponent<Animator>();
+        initialPosition = targetPosition = transform.position;
+        bullet = Resources.Load<Bullet>("BossInfinity/Enemies/Auxiliaries/Bullet");
+        animator = GetComponent<Animator>();
     }
     
     public virtual void Shoot()
     {
-        ShotsNumber += 1;
-        if (ShotsNumber >= maxShots) Animator.SetBool("FinishAttack", true);
+        shotsNumber += 1;
+        if (shotsNumber >= maxShots) animator.SetBool("FinishAttack", true);
         var pointRight = firePoint.right;
-        var obj = Instantiate(Bullet, firePoint.position, firePoint.rotation);
+        var obj = Instantiate(bullet, firePoint.position, firePoint.rotation);
         obj.Direction = pointRight;
     }
 
     public void MoveToTarget() 
     {
-        if (transform.position == TargetPosition) Animator.SetBool("StartAttack", true);
-        MoveTo(TargetPosition);
+        if (transform.position == targetPosition) animator.SetBool("StartAttack", true);
+        MoveTo(targetPosition);
     }
 
     public void MoveToInitialPoint()
     {
-        if (transform.position == InitialPosition) Destroy(gameObject);
-        MoveTo(InitialPosition);
+        if (transform.position == initialPosition) Destroy(gameObject);
+        MoveTo(initialPosition);
     }
 
-    public void SetTarget(Vector3 target) => TargetPosition = target;
+    public void SetTarget(Vector3 target) => targetPosition = target;
 
     private void MoveTo(Vector3 target)
     {

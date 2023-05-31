@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FallingPlant : StaticEnemy
@@ -12,7 +9,7 @@ public class FallingPlant : StaticEnemy
     
     private void Start()
     {
-        deathEffect = Resources.Load<GameObject>("RunAndGun/Effects/FallingPlantDestroy Variant");
+        deathEffect = Resources.Load<GameObject>("RunAndGun/Effects/FallingPlantDestroy");
         rb = GetComponent<Rigidbody2D>();
         direction = transform.up;
         Damage = 1;

@@ -65,8 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 3
-  character: {fileID: 0}
-  lives: 3
+  characterPos: {fileID: 0}
   attackRate: 0.5
 --- !u!95 &1980241305
 Animator:
@@ -79,7 +78,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d71496da3d8ff304d833f2dc55dfa5ef, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0

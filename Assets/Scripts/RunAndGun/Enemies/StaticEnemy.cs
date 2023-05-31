@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class StaticEnemy : Unit
+public class StaticEnemy : Enemy
 { 
     [SerializeField] private int lives = 5;
-    public Transform character;
+    public Transform characterPos;
     
     public override void ReceiveDamage(int damage)
     {

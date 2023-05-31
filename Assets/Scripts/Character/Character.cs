@@ -1,10 +1,8 @@
-using System;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Character : Unit
 {
+    [Header("Physics parameters")]
     [SerializeField] public int lives;
     [SerializeField] private float speed = 4.0f;
     [SerializeField] private float jumpForce = 10.0f;
@@ -12,28 +10,31 @@ public class Character : Unit
     [SerializeField] private float timeOfInvulnerability = 0.6f;
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private int attackDamage = 1;
-    [SerializeField] private float groundCheck = 0.3f;
-    public float attackRate = 2f;
-    public int maxLives = 3;
-
-    private new Rigidbody2D rigidbody;
+    [SerializeField] private float groundCheckRadius = 0.3f;
+    [SerializeField] private float attackRate = 2f;
+    [SerializeField] private int maxLives = 3;
+    
+    [Header("Related objects")]
+    [SerializeField] private CharLivesBar charLivesBar;
+    [SerializeField] private Transform groundPosition;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private LevelManager levelManager;
+    
+    private Rigidbody2D rb;
     private Animator animator;
-    private new Transform transform;
-    public CharLivesBar charLivesBar;
-    public Transform attackPoint;
-    public Transform groundPosition;
+    private Transform trf;
     public LayerMask enemyLayers;
     public LayerMask groundLayers;
-    public LevelManager manager;
     
     private float invulnerabilityTimer;
     private float jumpTimeCounter;
     private float nextAttackTime;
     
-    private bool isJumping;
-    private bool isGrounded;
+    [Header("Character state conditions")]
     public bool isFacingRight;
     public bool inInvulnerability;
+    private bool isJumping;
+    private bool isGrounded;
     
     private static readonly int State = Animator.StringToHash("State");
     
@@ -46,34 +47,30 @@ public class Character : Unit
     private void Awake()
     {
         lives = maxLives;
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        transform = GetComponent<Transform>();
-    }
-    
-    private void FixedUpdate()
-    {
-        if (isGrounded) state = CharacterState.Idle;
-        UpdateInvulnerability();
-        if (Input.GetButton("Horizontal")) Run();
-        if (Input.GetButton("Fire1") && Time.time >= nextAttackTime) Attack();
-        else if (Input.GetButton("Jump")) Jump();
-        if (Input.GetButtonUp("Jump")) isJumping = false;
+        trf = GetComponent<Transform>();
     }
 
     private void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(groundPosition.position, groundCheck, groundLayers);
+        if (Input.GetButton("Horizontal")) Run();
+        else if (isGrounded) state = CharacterState.Idle;
+        if (Input.GetButton("Fire1") && Time.time >= nextAttackTime) Attack();
+        else if (Input.GetButton("Jump")) Jump();
     }
 
+    private void FixedUpdate()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundPosition.position, groundCheckRadius, groundLayers);
+        UpdateInvulnerability();
+    }
+    
     private void UpdateInvulnerability()
     {
         if (!inInvulnerability) return;
         invulnerabilityTimer -= Time.deltaTime;
-        if (invulnerabilityTimer < 0)
-        {
-            inInvulnerability = false;
-        }
+        if (invulnerabilityTimer < 0) inInvulnerability = false;
     }
 
     private void Run()
@@ -88,17 +85,17 @@ public class Character : Unit
     private void Flip()
     {
         isFacingRight = !isFacingRight;
-        var theScale = transform.localScale;
+        var theScale = trf.localScale;
         theScale.x *= -1;
-        transform.localScale = theScale;
+        trf.localScale = theScale;
     }
-
+    
     private void Jump()
     {
         if (isGrounded)
         {
             state = CharacterState.Jump;
-            rigidbody.velocity = transform.up * jumpForce;
+            rb.velocity = transform.up * jumpForce;
             jumpTimeCounter = jumpTime;
             isJumping = true;
             isGrounded = false;
@@ -108,7 +105,7 @@ public class Character : Unit
         
         if (jumpTimeCounter > 0)
         {
-            rigidbody.velocity = transform.up * jumpForce;
+            rb.velocity = transform.up * jumpForce;
             jumpTimeCounter -= Time.deltaTime;
         }
         else
@@ -122,7 +119,6 @@ public class Character : Unit
         if (inInvulnerability) return;
         animator.SetTrigger("IsAttacked");
         lives -= damage;
-        state = CharacterState.Attacked;
         charLivesBar.Refresh();
         if (lives <= 0) Die();
         inInvulnerability = true;
@@ -132,37 +128,32 @@ public class Character : Unit
     protected override void Die()
     {
         state = CharacterState.Died;
-        manager.ShowGameOverWindow();
+        levelManager.ShowGameOverWindow();
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
     private void Attack()
     {
         animator.SetTrigger("IsAttack");
-        state = CharacterState.Idle;
+        state = CharacterState.Attack;
         var hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (var enemy in hitEnemies)
         {
             enemy.GetComponent<Unit>()?.ReceiveDamage(attackDamage);
-            Debug.Log("We hit "+ enemy.name);
         }
         nextAttackTime = Time.time + 1f / attackRate;
     }
 
     private void OnParticleCollision(GameObject other)
     {
-        if (other.CompareTag("Spores"))
-        {
-            ReceiveDamage(1);
-            // poisoned character animation
-        }
+        if (other.CompareTag("Spores")) ReceiveDamage(1);
     }
 
     private void OnDrawGizmosSelected()
     {
         if (attackPoint is null || groundPosition is null) return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-        Gizmos.DrawWireSphere(groundPosition.position, groundCheck);
+        Gizmos.DrawWireSphere(groundPosition.position, groundCheckRadius);
     }
 }
 
@@ -172,5 +163,5 @@ public enum CharacterState
     Run = 1,
     Jump = 2,
     Died = 3,
-    Attacked = 4
+    Attack = 4,
 }
