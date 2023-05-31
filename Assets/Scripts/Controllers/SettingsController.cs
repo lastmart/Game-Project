@@ -16,16 +16,6 @@ public class SettingsController : MonoBehaviour
         LoadSettings();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void SetDifficulty(Toggle toggle)
-    {
-    }
-    
     public void SetMusicVolume(float desiredVolume)
     {
         musicMixer.SetFloat("MasterVolume", Mathf.Log10(desiredVolume) * 20);
@@ -53,6 +43,9 @@ public class SettingsController : MonoBehaviour
             ? PlayerPrefs.GetFloat("mVolume") 
             : 0.001f);
         musicSlider.value = PlayerPrefs.GetFloat("mSlider");
+        effectsMixer.SetFloat("MasterVolume", PlayerPrefs.HasKey("eVolume") 
+            ? PlayerPrefs.GetFloat("eVolume") 
+            : 0.001f);
         effectsSlider.value = PlayerPrefs.GetFloat("eSlider");
     }
 }

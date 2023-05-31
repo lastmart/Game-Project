@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Character : Unit
 {
@@ -19,6 +20,7 @@ public class Character : Unit
     [SerializeField] private Transform groundPosition;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LevelManager levelManager;
+    [SerializeField] public AudioManager manager;
     
     private Rigidbody2D rb;
     private Animator animator;
@@ -94,6 +96,7 @@ public class Character : Unit
     {
         if (isGrounded)
         {
+            manager.Play("Jump");
             state = CharacterState.Jump;
             rb.velocity = transform.up * jumpForce;
             jumpTimeCounter = jumpTime;
@@ -117,6 +120,7 @@ public class Character : Unit
     public override void ReceiveDamage(int damage)
     {
         if (inInvulnerability) return;
+        manager.Play("ReceiveDamage");
         animator.SetTrigger("IsAttacked");
         lives -= damage;
         charLivesBar.Refresh();
@@ -137,6 +141,7 @@ public class Character : Unit
         animator.SetTrigger("IsAttack");
         state = CharacterState.Attack;
         var hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        if (hitEnemies.Length == 0) manager.Play("MissSword");
         foreach (var enemy in hitEnemies)
         {
             enemy.GetComponent<Unit>()?.ReceiveDamage(attackDamage);
