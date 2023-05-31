@@ -555,7 +555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &153381580
 RectTransform:
   m_ObjectHideFlags: 0
@@ -577,7 +577,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.035705566}
+  m_AnchoredPosition: {x: 0, y: 0.03564453}
   m_SizeDelta: {x: 39.089966, y: 43.27002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &153381581
@@ -5374,8 +5374,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000002861, y: -0.00000095367}
-  m_SizeDelta: {x: 232.84, y: 47.5}
+  m_AnchoredPosition: {x: 0.00000095367, y: -0.000005722}
+  m_SizeDelta: {x: 263.37, y: 86.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &852796858
 MonoBehaviour:
@@ -5398,12 +5398,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_Font: {fileID: 12800000, guid: be0ab87609ed6bb47aeaf4fda7722fcd, type: 3}
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -5753,7 +5753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9056604, g: 0.5576027, b: 0, a: 0.85490197}
+  m_Color: {r: 0.7803922, g: 0.47450984, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6146,6 +6146,10 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 1165570645}
+    - target: {fileID: 8291221089162530436, guid: 8fbf4b2842cf61d4e96010db97a03c5f, type: 3}
+      propertyPath: amanager
+      value: 
+      objectReference: {fileID: 1433179524}
     - target: {fileID: 8291221089162530436, guid: 8fbf4b2842cf61d4e96010db97a03c5f, type: 3}
       propertyPath: groundCheck
       value: 0.3
@@ -58393,6 +58397,86 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3060099848538971124, guid: aa6fec42b0d865542b369922c0fbfa76, type: 3}
   m_PrefabInstance: {fileID: 1760876024}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1433179523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1433179525}
+  - component: {fileID: 1433179524}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1433179524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433179523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598d21bec06296f46a14e6d0ea06aa50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - name: Jump
+    clip: {fileID: 8300000, guid: 3048004766672484fb7c40f33f39bcbe, type: 3}
+    sourse: {fileID: 0}
+    mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
+    volume: 1
+  - name: ReceiveDamage
+    clip: {fileID: 8300000, guid: 4ba82ef7a4568934a9969b5a55d5a526, type: 3}
+    sourse: {fileID: 0}
+    mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
+    volume: 1
+  - name: MissSword
+    clip: {fileID: 8300000, guid: 55080f7bd19201745a32c47fb882705b, type: 3}
+    sourse: {fileID: 0}
+    mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
+    volume: 1
+  - name: NotMissSword
+    clip: {fileID: 8300000, guid: 721d41d75e92c2f40bfec6a2179bbb05, type: 3}
+    sourse: {fileID: 0}
+    mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
+    volume: 1
+  - name: CabbageExplosion
+    clip: {fileID: 8300000, guid: 5deda00552137d443b320b0112754317, type: 3}
+    sourse: {fileID: 0}
+    mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
+    volume: 1
+  - name: Spikes
+    clip: {fileID: 8300000, guid: 3b97788c299ce44449b76f90633658c4, type: 3}
+    sourse: {fileID: 0}
+    mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
+    volume: 1
+  - name: Fireball
+    clip: {fileID: 8300000, guid: 7e7b1e5042bf16a4cbad175fbc85fb38, type: 3}
+    sourse: {fileID: 0}
+    mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
+    volume: 1
+--- !u!4 &1433179525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433179523}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.120891, y: 0.24857138, z: 73.94149}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1475566417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69163,8 +69247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000002861, y: -0.00000095367}
-  m_SizeDelta: {x: 232.84, y: 47.5}
+  m_AnchoredPosition: {x: -0.0000023842, y: -0.0000038147}
+  m_SizeDelta: {x: 239.4, y: 78.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1764224038
 MonoBehaviour:
@@ -69187,12 +69271,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_Font: {fileID: 12800000, guid: be0ab87609ed6bb47aeaf4fda7722fcd, type: 3}
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

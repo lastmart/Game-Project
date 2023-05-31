@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 
 public class Character : Unit
 {
+    [SerializeField] public AudioManager amanager;
     [SerializeField] public int lives;
     [SerializeField] private float speed = 4.0f;
     [SerializeField] private float jumpForce = 10.0f;
@@ -64,6 +65,7 @@ public class Character : Unit
     private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(groundPosition.position, groundCheck, groundLayers);
+        if (isGrounded) isJumping = false;
     }
 
     private void UpdateInvulnerability()
@@ -95,8 +97,9 @@ public class Character : Unit
 
     private void Jump()
     {
-        if (isGrounded)
+        if (isGrounded && !isJumping)
         {
+            amanager.Play("Jump");
             state = CharacterState.Jump;
             rigidbody.velocity = transform.up * jumpForce;
             jumpTimeCounter = jumpTime;
@@ -120,6 +123,7 @@ public class Character : Unit
     public override void ReceiveDamage(int damage)
     {
         if (inInvulnerability) return;
+        amanager.Play("ReceiveDamage");
         animator.SetTrigger("IsAttacked");
         lives -= damage;
         state = CharacterState.Attacked;
@@ -141,9 +145,15 @@ public class Character : Unit
         animator.SetTrigger("IsAttack");
         state = CharacterState.Idle;
         var hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        if (hitEnemies.Length == 0) amanager.Play("MissSword");
         foreach (var enemy in hitEnemies)
-        {
-            enemy.GetComponent<Unit>()?.ReceiveDamage(attackDamage);
+        { 
+            if (enemy.GetComponent<Unit>() != null)
+            {
+                amanager.Play("NotMissSword");
+                enemy.GetComponent<Unit>().ReceiveDamage(attackDamage);
+            }
+            //enemy.GetComponent<Unit>()?.ReceiveDamage(attackDamage);
             Debug.Log("We hit "+ enemy.name);
         }
         nextAttackTime = Time.time + 1f / attackRate;
