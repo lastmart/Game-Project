@@ -4,9 +4,6 @@ namespace Controllers
 {
     public class MenuMusic : MonoBehaviour
     {
-        /*[Header("Tags")] 
-        [SerializeField] public static string CreatedTag { get; }*/
-        
         private void Awake()
         {
             var obj = GameObject.FindGameObjectWithTag("Menu_Music");

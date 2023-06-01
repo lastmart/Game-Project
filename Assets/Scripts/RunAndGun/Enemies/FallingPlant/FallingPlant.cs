@@ -27,8 +27,9 @@ public class FallingPlant : StaticEnemy
     protected override void OnTriggerEnter2D(Collider2D col)
     {
         Attack(col);
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Instantiate(music, transform.position, Quaternion.identity);
+        var position = transform.position;
+        Instantiate(deathEffect, position, Quaternion.identity);
+        Instantiate(music, position, Quaternion.identity);
         Destroy(gameObject);
     }
     

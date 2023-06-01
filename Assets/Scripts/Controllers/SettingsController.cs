@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -11,6 +8,7 @@ public class SettingsController : MonoBehaviour
     [SerializeField] private AudioMixer effectsMixer;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider effectsSlider;
+    
     void Start()
     {
         LoadSettings();

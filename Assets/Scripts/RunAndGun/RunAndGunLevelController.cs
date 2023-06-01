@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class RunAndGunLevelController : LevelManager
 {
-    public Timer timer;
-    public CinemachineVirtualCamera cmn;
-    public Text score;
+    [SerializeField] private Timer timer;
+    [SerializeField] private CinemachineVirtualCamera cmn;
+    [SerializeField] private Text score;
     
     public override void ShowGameOverWindow()
     {
@@ -21,7 +21,6 @@ public class RunAndGunLevelController : LevelManager
         winWindow.SetActive(true);
         character.enabled = false;
         score.text = $"Your score is: {timer.timerText.text}";
-        
     }
 
     private void OnTriggerEnter2D(Collider2D col)

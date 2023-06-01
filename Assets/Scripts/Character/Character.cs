@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Character : Unit
 {
@@ -23,11 +21,11 @@ public class Character : Unit
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private AudioManager audioManager;
     
+    [SerializeField] private LayerMask enemyLayers;
+    [SerializeField] private LayerMask groundLayers;
     private Rigidbody2D rb;
     private Animator animator;
     private Transform trf;
-    public LayerMask enemyLayers;
-    public LayerMask groundLayers;
     
     private float invulnerabilityTimer;
     private float jumpTimeCounter;

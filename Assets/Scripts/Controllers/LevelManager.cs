@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public Character character; 
-    public GameObject gameOverWindow;
-    public GameObject winWindow; 
+    [SerializeField] protected Character character; 
+    [SerializeField] protected GameObject gameOverWindow;
+    [SerializeField] protected GameObject winWindow; 
     
     public virtual void ShowGameOverWindow()
     {

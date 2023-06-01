@@ -1,8 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Net.Mime;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +15,7 @@ public class Timer : MonoBehaviour
         StartCoroutine(TimeFlow());
     }
 
-    IEnumerator TimeFlow()
+    private IEnumerator TimeFlow()
     {
         while (true)
         {
@@ -33,16 +29,8 @@ public class Timer : MonoBehaviour
             timerText.text = $"{min:D2} : {sec:D2}";
             yield return new WaitForSeconds(1);
         }
+        // ReSharper disable once IteratorNeverReturns
     }
-
-    public void StartTimer() => delta = 1;
-
+    
     public void StopTimer() => delta = 0;
-
-    public void ReloadTimer()
-    {
-        sec = -1;
-        min = 0;
-        StartTimer();
-    }
 }

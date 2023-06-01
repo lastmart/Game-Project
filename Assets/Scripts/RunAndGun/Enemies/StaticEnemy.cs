@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class StaticEnemy : Enemy
 { 
-    [SerializeField] private int lives = 5;
-    public Transform characterPos;
+    [SerializeField] protected int lives = 5;
+    public Transform characterPos;  
     
     public override void ReceiveDamage(int damage)
     {

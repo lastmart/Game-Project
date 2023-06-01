@@ -6,8 +6,9 @@ using UnityEngine;
 public class Mushroom : StaticEnemy
 {
     [SerializeField] private float startTimeBetweenSpawn = 2f;
+    [SerializeField] private GameObject spores;
+    
     private float timeBetweenSpawn;
-    public GameObject spores;
     private Animator animator;
     
     private void Start()

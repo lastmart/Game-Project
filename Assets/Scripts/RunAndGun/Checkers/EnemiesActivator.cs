@@ -7,7 +7,7 @@ public class EnemiesActivator : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (!col.CompareTag("Player")) return;
-        foreach (var enemy in enemies)
+        foreach (var enemy in enemies) 
             enemy.gameObject.SetActive(true);
     }
 }
