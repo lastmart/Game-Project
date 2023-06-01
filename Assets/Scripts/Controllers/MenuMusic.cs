@@ -12,7 +12,7 @@ namespace Controllers
             var obj = GameObject.FindGameObjectWithTag("Menu_Music");
             if (obj != null)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
             else
             {

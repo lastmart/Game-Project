@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1185913172597676087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1185913172597676073}
+  - component: {fileID: 1185913172597676072}
+  m_Layer: 0
+  m_Name: CharacterAudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1185913172597676073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185913172597676087}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.1283753, y: -1.7480797, z: 310.90967}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1185913172597676072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185913172597676087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598d21bec06296f46a14e6d0ea06aa50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - name: Jump
+    clip: {fileID: 8300000, guid: 3048004766672484fb7c40f33f39bcbe, type: 3}
+    sourse: {fileID: 0}
+    mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
+    volume: 0.757
+  - name: MissSword
+    clip: {fileID: 8300000, guid: 55080f7bd19201745a32c47fb882705b, type: 3}
+    sourse: {fileID: 0}
+    mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
+    volume: 0.499
+  - name: Sword
+    clip: {fileID: 8300000, guid: 721d41d75e92c2f40bfec6a2179bbb05, type: 3}
+    sourse: {fileID: 0}
+    mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
+    volume: 0.337
+  - name: ReceiveDamage
+    clip: {fileID: 8300000, guid: 4ba82ef7a4568934a9969b5a55d5a526, type: 3}
+    sourse: {fileID: 0}
+    mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
+    volume: 0.357

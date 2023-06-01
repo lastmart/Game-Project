@@ -1,12 +1,11 @@
 using System;
-using UnityEngine.Audio;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private Sound[] Sounds;
-    // Start is called before the first frame update
-    void Awake()
+    [SerializeField] private Sound[] Sounds; 
+    
+    private void Start()
     {
         foreach (var sound in Sounds)
         {
@@ -17,6 +16,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public void Play(string clipName)
     {
         var sound = Array.Find(Sounds, sound => sound.name == clipName);

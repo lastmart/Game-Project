@@ -1,8 +1,8 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Psi : Enemy
 {
+    [SerializeField] protected AudioManager audioManager;
     [SerializeField] protected float speed = 4.0f;
     [SerializeField] protected Vector3 targetPosition;
     
@@ -16,11 +16,15 @@ public class Psi : Enemy
         var transform1 = transform;
         direction = transform1.up;
     }
-
+    
     private protected virtual void FixedUpdate()
     {
         var position = transform.position;
-        if ((position - targetPosition).magnitude < 0.1) direction.y *= -1;
+        if ((position - targetPosition).magnitude < 0.1)
+        {
+            audioManager.Play("Appear");
+            direction.y *= -1;
+        }
         var newPosition = Vector2.MoveTowards(position, position + direction,
             speed * Time.deltaTime);
         rigidbody.MovePosition(newPosition);

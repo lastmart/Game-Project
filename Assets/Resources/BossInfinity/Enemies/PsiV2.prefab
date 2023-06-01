@@ -41,11 +41,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1165276409736022104, guid: 6e97643180b41de4abc8b01a580778a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.52945
+      value: -5.92
       objectReference: {fileID: 0}
     - target: {fileID: 1165276409736022104, guid: 6e97643180b41de4abc8b01a580778a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.2028685
+      value: -4.52
       objectReference: {fileID: 0}
     - target: {fileID: 1165276409736022104, guid: 6e97643180b41de4abc8b01a580778a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2275e4a24213d5f4abca26a1d9fa17ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 2875188259386198610}
   speed: 4
   targetPosition: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
@@ -165,3 +166,14 @@ MonoBehaviour:
   invulnerabilityDuration: 0
   healths: 3
   spawner: {fileID: 0}
+--- !u!114 &2875188259386198610 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2493206536824760703, guid: 6e97643180b41de4abc8b01a580778a6, type: 3}
+  m_PrefabInstance: {fileID: 396068688623149869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598d21bec06296f46a14e6d0ea06aa50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

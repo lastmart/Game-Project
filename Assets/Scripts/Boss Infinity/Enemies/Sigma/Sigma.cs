@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class Sigma : Enemy
 {
+    [SerializeField] protected AudioManager audioManager;
     [SerializeField] protected int maxShots = 5;
     [SerializeField] private float speed = 1.0f;
     
@@ -27,6 +28,7 @@ public class Sigma : Enemy
     
     public virtual void Shoot()
     {
+        audioManager.Play("Shot");
         shotsNumber += 1;
         if (shotsNumber >= maxShots) animator.SetBool("FinishAttack", true);
         var pointRight = firePoint.right;

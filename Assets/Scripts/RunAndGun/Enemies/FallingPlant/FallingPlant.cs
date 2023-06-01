@@ -1,15 +1,18 @@
 using UnityEngine;
 
 public class FallingPlant : StaticEnemy
-{
+{ 
     [SerializeField] private float speed = 8f;
+    private AudioManager audioManager;
+    [SerializeField] private AudioSource music;
     private Rigidbody2D rb;
     private Vector3 direction;
     private GameObject deathEffect;
     
-    private void Start()
+    private void Awake()
     {
         deathEffect = Resources.Load<GameObject>("RunAndGun/Effects/FallingPlantDestroy");
+        audioManager = gameObject.GetComponentInChildren<AudioManager>();
         rb = GetComponent<Rigidbody2D>();
         direction = transform.up;
         Damage = 1;
@@ -27,6 +30,8 @@ public class FallingPlant : StaticEnemy
     {
         Attack(col);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Instantiate(music, transform.position, Quaternion.identity);
+        //audioManager.Play("Destroy");
         Destroy(gameObject);
     }
     

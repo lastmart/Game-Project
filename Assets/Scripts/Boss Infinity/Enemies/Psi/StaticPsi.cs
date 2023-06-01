@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class StaticPsi : Psi
@@ -60,6 +59,7 @@ public class StaticPsi : Psi
     {
         var character = collision.gameObject.GetComponent<Character>();
         if (character is null) return;
+        audioManager.Play("Appear");
         character.ReceiveDamage(Damage);
     }
 }

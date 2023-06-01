@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -20,7 +21,7 @@ public class Character : Unit
     [SerializeField] private Transform groundPosition;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LevelManager levelManager;
-    [SerializeField] public AudioManager manager;
+    [SerializeField] private AudioManager audioManager;
     
     private Rigidbody2D rb;
     private Animator animator;
@@ -64,8 +65,13 @@ public class Character : Unit
 
     private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(groundPosition.position, groundCheckRadius, groundLayers);
         UpdateInvulnerability();
+        var ground = Physics2D.OverlapCircle(groundPosition.position, groundCheckRadius, groundLayers);
+        if (!ground) return;
+        if (ground.CompareTag("OneWayPlatform")) 
+            isGrounded = rb.velocity.y < 0.1;
+        else 
+            isGrounded = ground;
     }
     
     private void UpdateInvulnerability()
@@ -96,7 +102,7 @@ public class Character : Unit
     {
         if (isGrounded)
         {
-            manager.Play("Jump");
+            audioManager.Play("Jump");
             state = CharacterState.Jump;
             rb.velocity = transform.up * jumpForce;
             jumpTimeCounter = jumpTime;
@@ -120,8 +126,8 @@ public class Character : Unit
     public override void ReceiveDamage(int damage)
     {
         if (inInvulnerability) return;
-        manager.Play("ReceiveDamage");
         animator.SetTrigger("IsAttacked");
+        audioManager.Play("ReceiveDamage");
         lives -= damage;
         charLivesBar.Refresh();
         if (lives <= 0) Die();
@@ -141,7 +147,7 @@ public class Character : Unit
         animator.SetTrigger("IsAttack");
         state = CharacterState.Attack;
         var hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        if (hitEnemies.Length == 0) manager.Play("MissSword");
+        audioManager.Play(hitEnemies.Length == 0 ? "MissSword" : "Sword");
         foreach (var enemy in hitEnemies)
         {
             enemy.GetComponent<Unit>()?.ReceiveDamage(attackDamage);

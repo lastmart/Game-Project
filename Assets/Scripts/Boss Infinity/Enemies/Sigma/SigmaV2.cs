@@ -18,6 +18,7 @@ public class SigmaV2 : Sigma
     
     public override void Shoot()
     {
+        audioManager.Play("Shot");
         shotsNumber += 1;
         if (shotsNumber >= maxShots) animator.SetBool("FinishAttack", true);
         var position = firePoint.position;

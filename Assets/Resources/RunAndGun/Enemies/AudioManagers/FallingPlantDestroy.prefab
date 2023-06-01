@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7106337083838548165
+--- !u!1 &4887387069995260144
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2069270572042862802}
-  - component: {fileID: 4250777141804014387}
+  - component: {fileID: 4887387069995260150}
+  - component: {fileID: 4887387069995260145}
   m_Layer: 0
-  m_Name: JumpSound
+  m_Name: FallingPlantDestroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2069270572042862802
+--- !u!4 &4887387069995260150
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7106337083838548165}
+  m_GameObject: {fileID: 4887387069995260144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.0424304, y: -2.4020526, z: 1.9355959}
+  m_LocalPosition: {x: 32.79, y: 4.57, z: 106.291595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &4250777141804014387
+--- !u!82 &4887387069995260145
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7106337083838548165}
+  m_GameObject: {fileID: 4887387069995260144}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6c706914eca209c47a878aefca461b10, type: 3}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 5deda00552137d443b320b0112754317, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

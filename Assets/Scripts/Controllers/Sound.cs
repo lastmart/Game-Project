@@ -9,5 +9,4 @@ public class Sound
     [HideInInspector]
     public AudioSource sourse;
     public AudioMixerGroup mixer;
-    [Range(0f, 1f)] public float volume;
 }

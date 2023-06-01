@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FireFlower : StaticEnemy
 {
+    private AudioManager audioManager;
     private GameObject fireEffect;
     private Fireball fireball;
     private Animator animator;
@@ -13,6 +14,7 @@ public class FireFlower : StaticEnemy
     {
         fireEffect = Resources.Load<GameObject>("RunAndGun/Effects/FireEffect");
         fireball = Resources.Load<Fireball>("RunAndGun/Effects/Fireball");
+        audioManager = gameObject.GetComponentInChildren<AudioManager>();
         animator = gameObject.GetComponent<Animator>();
         nextAttackTime = Time.time + 1f / attackRate;
         Damage = 1;
@@ -28,6 +30,7 @@ public class FireFlower : StaticEnemy
     {
         animator.SetTrigger("IsAttack");
         Instantiate(fireEffect, transform.position, Quaternion.identity);
+        audioManager.Play("Attack");
     }
     
     private void Shoot()
