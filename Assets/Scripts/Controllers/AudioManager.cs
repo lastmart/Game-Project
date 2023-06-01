@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
             sound.sourse.clip = sound.clip;
             sound.sourse.outputAudioMixerGroup = sound.mixer;
             sound.sourse.playOnAwake = false;
+            sound.sourse.volume = sound.volume;
         }
     }
 

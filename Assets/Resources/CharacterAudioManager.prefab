@@ -49,19 +49,19 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 3048004766672484fb7c40f33f39bcbe, type: 3}
     sourse: {fileID: 0}
     mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
-    volume: 0.757
+    volume: 0.7
   - name: MissSword
     clip: {fileID: 8300000, guid: 55080f7bd19201745a32c47fb882705b, type: 3}
     sourse: {fileID: 0}
     mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
-    volume: 0.499
+    volume: 0.5
   - name: Sword
     clip: {fileID: 8300000, guid: 721d41d75e92c2f40bfec6a2179bbb05, type: 3}
     sourse: {fileID: 0}
     mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
-    volume: 0.337
+    volume: 0.33
   - name: ReceiveDamage
     clip: {fileID: 8300000, guid: 4ba82ef7a4568934a9969b5a55d5a526, type: 3}
     sourse: {fileID: 0}
     mixer: {fileID: 24300002, guid: 11fda5355a3e7014691f1a593c751136, type: 2}
-    volume: 0.357
+    volume: 0.42
