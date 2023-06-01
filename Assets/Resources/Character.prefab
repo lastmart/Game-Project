@@ -242,8 +242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 3
   speed: 4
-  jumpForce: 10
-  jumpTime: 0.35
+  jumpForce: 15
+  extraJumpsValue: 2
   timeOfInvulnerability: 0.6
   attackRange: 0.8
   attackDamage: 1

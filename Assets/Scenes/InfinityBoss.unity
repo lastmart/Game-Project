@@ -2994,7 +2994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eddf0dfddf968d4469179d3a8d6856d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTimeBetweenSpawn: 2
+  startTimeBetweenSpawn: 3
   reloadFrequency: 20
 --- !u!4 &1425091879 stripped
 Transform:

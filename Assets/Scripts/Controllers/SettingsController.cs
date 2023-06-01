@@ -9,7 +9,7 @@ public class SettingsController : MonoBehaviour
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider effectsSlider;
     
-    void Start()
+    void Awake()
     {
         LoadSettings();
     }

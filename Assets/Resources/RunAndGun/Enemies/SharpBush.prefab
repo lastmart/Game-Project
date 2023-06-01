@@ -135,7 +135,7 @@ MonoBehaviour:
   characterPos: {fileID: 0}
   damage: 1
   verticalPower: 50
-  horizontalPower: 10
+  horizontalPower: 20
 --- !u!61 &450658497
 BoxCollider2D:
   m_ObjectHideFlags: 0
