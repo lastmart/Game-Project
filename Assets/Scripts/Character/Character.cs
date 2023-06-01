@@ -83,7 +83,7 @@ public class Character : Unit
     {
         var direction = transform.right * Input.GetAxis("Horizontal");
         var position = transform.position; 
-        transform.position = Vector3.MoveTowards(position, position + direction, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(position, position + direction,  speed * Time.deltaTime);
         if (direction.x < 0 && !isFacingRight || direction.x > 0 && isFacingRight) Flip();
         if (isGrounded) state = CharacterState.Run;
     }
