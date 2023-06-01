@@ -6,7 +6,7 @@ public class Character : Unit
     [SerializeField] public int lives;
     [SerializeField] private float speed = 4.0f;
     [SerializeField] private float jumpForce = 10.0f;
-    [SerializeField] private float jumpTime = 0.25f;
+    [SerializeField] private int extraJumpsValue = 2;
     [SerializeField] private float timeOfInvulnerability = 0.6f;
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private int attackDamage = 1;
@@ -28,13 +28,12 @@ public class Character : Unit
     private Transform trf;
     
     private float invulnerabilityTimer;
-    private float jumpTimeCounter;
+    private int extraJumps;
     private float nextAttackTime;
     
     [Header("Character state conditions")]
     public bool isFacingRight;
     public bool inInvulnerability;
-    private bool isJumping;
     private bool isGrounded;
     
     private static readonly int State = Animator.StringToHash("State");
@@ -58,14 +57,18 @@ public class Character : Unit
         if (Input.GetButton("Horizontal")) Run();
         else if (isGrounded) state = CharacterState.Idle;
         if (Input.GetButton("Fire1") && Time.time >= nextAttackTime) Attack();
-        else if (Input.GetButton("Jump")) Jump();
+        else if (Input.GetButtonDown("Jump")) Jump();
     }
 
     private void FixedUpdate()
     {
         UpdateInvulnerability();
         var ground = Physics2D.OverlapCircle(groundPosition.position, groundCheckRadius, groundLayers);
-        if (!ground) return;
+        if (!ground)
+        {
+            isGrounded = false;
+            return;
+        }
         if (ground.CompareTag("OneWayPlatform")) 
             isGrounded = rb.velocity.y < 0.1;
         else 
@@ -100,24 +103,15 @@ public class Character : Unit
     {
         if (isGrounded)
         {
-            audioManager.Play("Jump");
-            state = CharacterState.Jump;
-            rb.velocity = transform.up * jumpForce;
-            jumpTimeCounter = jumpTime;
-            isJumping = true;
-            isGrounded = false;
+            extraJumps = extraJumpsValue;
         }
 
-        if (!isJumping) return;
-        
-        if (jumpTimeCounter > 0)
+        if (extraJumps > 0)
         {
-            rb.velocity = transform.up * jumpForce;
-            jumpTimeCounter -= Time.deltaTime;
-        }
-        else
-        {
-            isJumping = false;
+            state = CharacterState.Jump;
+            audioManager.Play("Jump");
+            rb.velocity = Vector2.up * jumpForce;
+            extraJumps--;
         }
     }
     

@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 5342
+  controlID: 81
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -87,7 +87,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 5343
+  controlID: 82
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 5344
+  controlID: 83
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -228,7 +228,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 08faffff
       m_LastClickedID: -1528
-      m_ExpandedIDs: e2faffffda610000
+      m_ExpandedIDs: e2faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -560,9 +560,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 51.239834, y: 11.489992, z: 1323.5007}
+    m_Target: {x: 197.2024, y: 87.98421, z: 2649.459}
     speed: 2
-    m_Value: {x: 49.24236, y: 11.213234, z: 1269.5343}
+    m_Value: {x: 197.2024, y: 87.98421, z: 2649.459}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -613,9 +613,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 36.725475
+    m_Target: 56.32018
     speed: 2
-    m_Value: 35.143997
+    m_Value: 56.32018
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -710,23 +710,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets/Scripts/RunAndGun/Checkers
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials
+  - Assets/Scripts/RunAndGun/Checkers
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "C:\\Users\\egore\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439
     \u0441\u0442\u043E\u043B\\\u0423\u0447\u0451\u0431\u0430\\Game-Project"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 8.600006}
-    m_SelectedIDs: 6a6b0000
-    m_LastClickedID: 27498
-    m_ExpandedIDs: 00000000126b0000146b0000166b0000186b00001a6b00001c6b00001e6b0000206b0000226b0000246b0000266b0000286b00002a6b00002c6b0000
+    scrollPos: {x: 0, y: 136.6}
+    m_SelectedIDs: 826c0000
+    m_LastClickedID: 27778
+    m_ExpandedIDs: 00000000426b0000446b0000466b0000486b00004a6b00004c6b00004e6b0000506b0000526b0000546b0000566b0000586b00005a6b00005c6b0000a26b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -754,7 +754,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000126b0000146b0000166b0000186b00001a6b00001c6b00001e6b0000206b0000226b0000246b0000266b0000286b00002a6b00002c6b0000
+    m_ExpandedIDs: 00000000426b0000446b0000466b0000486b00004a6b00004c6b00004e6b0000506b0000526b0000546b0000566b0000586b00005a6b00005c6b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -881,7 +881,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GridPaintPaletteWindow
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -890,15 +890,15 @@ MonoBehaviour:
     y: 0
     width: 400
     height: 722.8
-  m_MinSize: {x: 241, y: 221}
+  m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 15}
+  m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
   - {fileID: 15}
   - {fileID: 16}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -919,8 +919,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1137
-    y: 19
+    x: 1136
+    y: 73.6
     width: 399
     height: 701.8
   m_ViewDataDictionary: {fileID: 0}
@@ -934,7 +934,7 @@ MonoBehaviour:
     m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1528
+  m_LastInspectedObjectInstanceID: -1
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
@@ -974,7 +974,7 @@ MonoBehaviour:
     m_CachedPref: -50
     m_ControlHash: 1964396721
     m_PrefName: Preview_TilemapBrushInspector
-  m_Palette: {fileID: 5068493869539259736, guid: 9c04d478b5d25b546915235d934ee0c0, type: 3}
+  m_Palette: {fileID: 900178509871835748, guid: 389e21646ca4e374688d6815e1a04041, type: 3}
   m_DrawGridGizmo: 1
   m_DrawGizmos: 0
 --- !u!114 &16
