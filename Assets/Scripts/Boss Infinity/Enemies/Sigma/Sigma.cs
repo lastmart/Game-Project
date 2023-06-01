@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Sigma : Enemy
 {
@@ -10,7 +6,7 @@ public class Sigma : Enemy
     [SerializeField] protected int maxShots = 5;
     [SerializeField] private float speed = 1.0f;
     
-    public Transform firePoint;
+    [SerializeField] protected Transform firePoint;
     protected Animator animator;
     protected Bullet bullet;
 
@@ -31,9 +27,8 @@ public class Sigma : Enemy
         audioManager.Play("Shot");
         shotsNumber += 1;
         if (shotsNumber >= maxShots) animator.SetBool("FinishAttack", true);
-        var pointRight = firePoint.right;
-        var obj = Instantiate(bullet, firePoint.position, firePoint.rotation);
-        obj.Direction = pointRight;
+        var bulletObj = Instantiate(bullet, firePoint.position, firePoint.rotation);
+        bulletObj.Direction = firePoint.right;
     }
 
     public void MoveToTarget() 

@@ -25,8 +25,8 @@ public class SigmaV2 : Sigma
         var rotation = firePoint.rotation;
         foreach (var direction in bulletDirections)
         {
-            var obj = Instantiate(bullet, position, rotation);
-            obj.Direction = direction;
+            var bulletObj = Instantiate(bullet, position, rotation);
+            bulletObj.Direction = direction;
         }
     }
 }

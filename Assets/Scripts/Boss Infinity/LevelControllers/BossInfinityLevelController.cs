@@ -1,14 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class BossInfinityLevelController : LevelManager
 {
-    public SpawnSystem firstStage;
-    public SpawnSystem secondStage;
-    private BossInfinityStages stage;
+    [SerializeField] private SpawnSystem firstStage;
+    [SerializeField] private SpawnSystem secondStage;
+    [SerializeField] private BossInfinityStages stage;
 
     private void Start()
     {
@@ -39,17 +35,17 @@ public class BossInfinityLevelController : LevelManager
 
     private void SetFirstStage()
     {
-        firstStage.isActive = true;
-        secondStage.isActive = false;
+        firstStage.enabled = true;
+        secondStage.enabled = false;
     }
 
     private void SetSecondStage()
     {
-        firstStage.isActive = false;
-        secondStage.isActive = true;
+        firstStage.enabled = false;
+        secondStage.enabled = true;
     }
 
-    private void DisableAllSpawners() => firstStage.isActive = secondStage.isActive = false;
+    private void DisableAllSpawners() => firstStage.enabled = secondStage.enabled = false;
 
     public override void ShowGameOverWindow()
     {

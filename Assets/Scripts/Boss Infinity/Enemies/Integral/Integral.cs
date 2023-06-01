@@ -1,10 +1,8 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Integral : Enemy
 {
-    [SerializeField] private float speed = 4.0f;
+    [SerializeField] protected float speed = 4.0f;
     
     private Rigidbody2D rb;
     public Vector3 direction;

@@ -6,13 +6,13 @@ public class Psi : Enemy
     [SerializeField] protected float speed = 4.0f;
     [SerializeField] protected Vector3 targetPosition;
     
-    private new Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     public Vector3 direction;
 
     protected virtual void Start()
     {
         Damage = 1;
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         var transform1 = transform;
         direction = transform1.up;
     }
@@ -27,7 +27,7 @@ public class Psi : Enemy
         }
         var newPosition = Vector2.MoveTowards(position, position + direction,
             speed * Time.deltaTime);
-        rigidbody.MovePosition(newPosition);
+        rb.MovePosition(newPosition);
     }
 
     public override void ReceiveDamage(int damage)

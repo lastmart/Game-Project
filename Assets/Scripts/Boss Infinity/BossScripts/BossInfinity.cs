@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class BossInfinity : Unit
 {
-    [SerializeField] public int maxLives = 20;
-    [SerializeField] public int lives;
-
+    [Header("Physics parameters")]
+    [SerializeField] private int maxLives = 20;
+    [SerializeField] private int lives;
+    private int lifeAtBeginningSecondStage;
+    
+    [Header("Related objects")]
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private GameObject hurtEffect;
     public BossInfinityLevelController controller;
-    public HealthBar healthBar;
-    public GameObject hurtEffect;
-    private new Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     private Animator animator;
 
     public bool isInvulnerable;
@@ -43,15 +46,16 @@ public class BossInfinity : Unit
     private void Start()
     {
         CurrentLives = maxLives;
+        lifeAtBeginningSecondStage = maxLives / 2;
         healthBar.SetMaxHealth(maxLives);
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         isInvulnerable = true;
     }
 
     private void UpdateStageState()
     {
-        if (lives <= maxLives / 2)
+        if (lives <= lifeAtBeginningSecondStage)
         {
             controller.Stage = BossInfinityStages.Second;
             animator.SetBool("IsEnraged", true);
@@ -76,7 +80,7 @@ public class BossInfinity : Unit
     public Vector2 GetClosestTarget()
     {
         return GetFirstStageWay
-            .OrderBy(t => (rigidbody.position - t.Key).magnitude)
+            .OrderBy(t => (rb.position - t.Key).magnitude)
             .First()
             .Key;
     }
