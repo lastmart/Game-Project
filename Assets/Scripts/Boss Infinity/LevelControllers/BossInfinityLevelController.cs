@@ -9,6 +9,8 @@ public class BossInfinityLevelController : LevelManager
     private void Start()
     {
         Stage = BossInfinityStages.Zero;
+        firstStage.enabled = false;
+        secondStage.enabled = false;
     }
 
     public BossInfinityStages Stage
